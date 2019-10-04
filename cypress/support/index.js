@@ -15,7 +15,7 @@
 import 'cypress-plugin-retries';
 import './ManualTest';
 import './CustomSpec';
-import './WaitUtil';
+import './WaitUntil';
 import './Login';
 
 export const fixCypressSpec = filename => () => {
