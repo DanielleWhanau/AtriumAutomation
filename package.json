@@ -1,0 +1,17 @@
+{
+  "name": "publicsiteautomation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "open": "set DEBUG=cypress:* && cypress open",
+    "open-visual": "set PERCY_TOKEN=fadc565cd9a7e66551dc18d60e7c010e5d134320b6f62b05be58cb9c6364db85 && percy exec -- cypress open",
+    "run": "cypress run",
+    "run-ci": "node ci-runner.js"
+  },
+  "dependencies": {
+    "cypress": "3.4.1",
+    "cypress-plugin-retries": "^1.3.0",
+    "node-notifier": "^5.4.3"
+  },
+  "devDependencies": {}
+}
