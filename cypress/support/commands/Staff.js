@@ -60,6 +60,7 @@ Cypress.Commands.add('newStaff', (type) => {
         }
 
         if (type === 'office-administrator') {
+            //Selecting office the Office Adminsitrator "Manages"
             command.get('[id$=btnChangeManagedOU]')
                 .click()
                 .get('#ctl00_cph0_divHeading')
@@ -68,15 +69,22 @@ Cypress.Commands.add('newStaff', (type) => {
                 .click()
                 .get('#select2-drop > div:nth-child(1) > input')
                 .click()
+                //Finding and selecting specific office from drop down list...
                 .type('Harcourts Greytown')
                 .get(selectFromList)
                 .children()
                 .contains('Harcourts Greytown (Branch)')
                 .first()
                 .click()
+                //Confirming office selection..
                 .get('[id$=cph0_btnSelect]', { timeout: 20000 })
                 .click()
+                //Selecting "Specialty" - N/A  
+                .get('[id$=rblSpecialty_0]')
+                .click()
+                //Changing "Security Group" to Office Adminsitrator
                 .get('[id$=drpSecurityGroup] > .select2-choice', { timeout: 20000 })
+                .click()
                 .get(selectFromList)
                 .children()
                 .contains("Office Administrator")
@@ -98,7 +106,7 @@ Cypress.Commands.add('saveStaffButton', () => {
 });
 
 Cypress.Commands.add('selectOK', () => {
-    cy.get('[id$=divCredentialHeading]').should('be.visible')
+    cy.get('[id$=divCredentialHeading]', { timeout: 20000 }).should('be.visible')
         .get('[id$=cph0_btnOk]', { timeout: 20000 })
         .contains('Ok')
         .click()
