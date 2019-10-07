@@ -11,7 +11,6 @@ describe('Create Office Adminsitrator', function () {
 
     it('can create minimal office administrator', () => {
         cy.get('@users').then(({ firstName, lastName }) => {
-
         })
     })
 });

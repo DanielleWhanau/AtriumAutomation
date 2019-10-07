@@ -4,7 +4,8 @@ Cypress.Commands.add('newStaff', (type) => {
     return cy.then(() => {
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
-        
+
+        var selectFromList = 'li.select2-results-dept-0'
         var command = cy
             .get('[id$=hypAddStaff]')
             .contains('Add New Staff')
@@ -46,29 +47,47 @@ Cypress.Commands.add('newStaff', (type) => {
             .get('.ajax__tab_header span.ajax__tab_tab')
             .contains('System')
             .click()
-            .wrap({firstName, lastName})
+            .wrap({ firstName, lastName })
             .as('user')
 
-            if (type === 'sales-consultant') {
-                command.get('span[securityroleid=18] > input')
-                    .click()
-                    .get('span[securityroleid=29] > input')
-                    .click()
-            }
-            
-            if (type === 'office-administrator') {
-                command.get('[id$=btnChangeManagedOU]')
-                    .click()
-                    .get()
-                    .get('span[securityroleid=29] > input')
-                    .click()
-            }
+        if (type === 'sales-consultant') {
+            //Selects Full edit listing permissions
+            command.get('span[securityroleid=18] > input')
+                .click()
+                //Selects Selling Consultant permissions
+                .get('span[securityroleid=29] > input')
+                .click()
+        }
 
-            command
+        if (type === 'office-administrator') {
+            command.get('[id$=btnChangeManagedOU]')
+                .click()
+                .get('#ctl00_cph0_divHeading')
+                .should("be.visible")
+                .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
+                .click()
+                .get('#select2-drop > div:nth-child(1) > input')
+                .click()
+                .type('Harcourts Greytown')
+                .get(selectFromList)
+                .children()
+                .contains('Harcourts Greytown (Branch)')
+                .first()
+                .click()
+                .get('[id$=cph0_btnSelect]', { timeout: 20000 })
+                .click()
+                .get('[id$=drpSecurityGroup] > .select2-choice', { timeout: 20000 })
+                .get(selectFromList)
+                .children()
+                .contains("Office Administrator")
+                .click({ force: true })
+        }
+
+        command
             .saveStaffButton()
             .selectOK();
-    
-            return command;
+
+        return command;
     });
 });
 
