@@ -1,5 +1,4 @@
-import {fixCypressSpec} from "../../support";
-import Environment from "../../support/commands/Logins";
+import Environment from "../../support/Environment";
 
 describe('Login', function () {
 
