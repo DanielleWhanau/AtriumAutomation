@@ -5,7 +5,7 @@ export const Environment = {
     country: Cypress.env('country'),
     manual: Cypress.env('manual'),
     pages: {
-        dashboard: Cypress.env('urls').dashboard,
+        login: Cypress.env('urls').login,
     },
     user: {
         username: Cypress.env('user').username,

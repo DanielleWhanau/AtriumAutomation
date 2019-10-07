@@ -6,14 +6,14 @@
   "env": {
     "manual": false,
     "RETRIES": 2,
-    "environment": "QA",
+    "environment": "STAGE",
     "country": "NZ",
     "urls": {
-      "dashboard": "https://one-nz-stage.harcourts.net"
+      "login": "https://one-nz-stage.harcourts.net"
     },
     "user": {
-      "username": "dontusethis",
-      "password": "dontusethis"
+      "username": "daninz",
+      "password": "daninz"
     }
   },
   "projectId": "so24xv"

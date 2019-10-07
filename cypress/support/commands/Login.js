@@ -1,4 +1,4 @@
-import Environment from "./Environment";
+import Environment from "../Environment";
 
 Cypress.Commands.add('login', () => {
     cy.get('input[name=username]')

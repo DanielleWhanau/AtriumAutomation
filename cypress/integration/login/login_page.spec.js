@@ -1,12 +1,10 @@
 import {fixCypressSpec} from "../../support";
-import Environment from "../../support/Environment";
+import Environment from "../../support/commands/Logins";
 
 describe('Login', function () {
 
-    beforeEach(fixCypressSpec(__filename));
-
     beforeEach(() => {
-        cy.visit(Environment.pages.dashboard);
+        cy.visit(Environment.pages.login);
     });
 
     it('Can login', () => {
