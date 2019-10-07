@@ -6,6 +6,7 @@ Cypress.Commands.add('newStaff', (type) => {
         const lastName = Faker.name.lastName();
 
         var selectFromList = 'li.select2-results-dept-0'
+        var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         var command = cy
             .get('[id$=hypAddStaff]')
             .contains('Add New Staff')
@@ -28,7 +29,7 @@ Cypress.Commands.add('newStaff', (type) => {
             //Faker creates a random date within the last 20 years
             .type(Faker.date.past(20).toLocaleDateString('ca-ES'))
             //Selects Contact tab on edit page
-            .get('.ajax__tab_header span.ajax__tab_tab')
+            .get(selectTab)
             .contains('Contact')
             .click({ force: true })
             //Enter Mobile number
@@ -44,7 +45,7 @@ Cypress.Commands.add('newStaff', (type) => {
             .click()
             .type('h1.test.testers@harcourts.net')
             //Selects System tab on edit page
-            .get('.ajax__tab_header span.ajax__tab_tab')
+            .get(selectTab)
             .contains('System')
             .click()
             .wrap({ firstName, lastName })
