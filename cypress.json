@@ -9,7 +9,8 @@
     "environment": "STAGE",
     "country": "NZ",
     "urls": {
-      "login": "https://one-nz-stage.harcourts.net"
+      "dashboard": "https://one-nz-stage.harcourts.net",
+      "residentialSalesListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residential"
     },
     "user": {
       "username": "daninz",

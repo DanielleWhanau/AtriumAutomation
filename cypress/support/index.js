@@ -18,3 +18,4 @@ import './CustomSpec';
 import './WaitUntil';
 import '../support/commands/Login';
 import '../support/commands/Staff';
+import '../support/commands/Listing';

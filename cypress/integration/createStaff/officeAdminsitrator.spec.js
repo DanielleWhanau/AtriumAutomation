@@ -3,7 +3,7 @@ import Environment from "../../support/Environment";
 describe('Create Office Adminsitrator', function () {
 
     beforeEach(() => {
-        cy.visit(Environment.pages.login);
+        cy.visit(Environment.pages.dashboard);
         cy.login();
         cy.newStaff('office-administrator')
         
