@@ -2,15 +2,15 @@ import Faker from 'faker';
 
 Cypress.Commands.add('addListing', (type) => {
     return cy.then(() => {
-        //const streetNumber = Faker.streetNumber.streetNumber();
-        const streetNumber = Faker.random.number(100); 
-        const streetName = Faker.address.streetName(); 
+        const streetNumber = Faker.random.number(100);
+        const streetName = Faker.address.streetName();
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
 
         var agentName = 'Danielle Whanau'
-        var suburb = 'Halswell'    
-        var selectFromList = 'li.select2-results-dept-0'  
+        var suburb = 'Halswell'
+        var selectFromList = 'li.select2-results-dept-0'
+        var sellerModal = '#divContactNewQuick > .modalBody'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         var command = cy
             .get('[id$=ajaxSearchStaff_hidSelectedID] > .select2-choice > .select2-arrow')
@@ -34,18 +34,69 @@ Cypress.Commands.add('addListing', (type) => {
             .get('[id$=autogen22_search]')
             .click()
             .type(suburb)
-            .get(selectFromList)
-            .contains(suburb)
+            .get('.select2-searching')
+            .should('not.be.visible')
+            .get(selectFromList, { timeout: 2000 })
+            .contains(suburb, { timeout: 2000 })
+            .click()
+            .get(selectTab)
+            .contains('Map')
+            .click()
+            .get(".listing-edit-map", { timeout: 30000 })
+            .should("be.visible")
+            .get('#geocodeResults > a')
+            .contains("New Zealand")
+            .click()
+            .get(selectTab)
+            .contains('Sellers')
+            .click()
+            .get('[id$=btnAddContact]', { timeout: 2000 })
+            .click()
+            .get(sellerModal)
+            .should('be.visible')
+            .get('[id$=txtFirstName]', { timeout: 2000 })
+            .click()
+            .type(firstName)
+            .get('[id$=txtLastName]')
+            .click()
+            .type(lastName)
+            .get('[id$=txtEmailAddress]')
+            .click()
+            .type('h1.test.testers@harcourts.net')
+            .get('[id$=uclContactNewQuick_txtConfirmEmail]')
+            .click()
+            .type('h1.test.testers@harcourts.net')
+            .get("[id$=uclContactNewQuick_btnAdd]")
+            .click()
+            .get(sellerModal)
+            .should('not.be.visible')
+            .get('[id$=tab4_tab]')
+            .click()
+            .get('[id$=radStatusAvailable]')
             .click()
 
 
+
         if (type === 'residential-sales') {
-            //Selects Full edit listing permissions
-            command.get('span[securityroleid=18] > input')
+            //Selects Listing Price Field
+            command.get('[id$=advMinimumPrice_0]')
                 .click()
-                //Selects Selling Consultant permissions
-                .get('span[securityroleid=29] > input')
+                .type('1500000')
+                .get(selectTab)
+                .contains('Property Type')
                 .click()
+                .get('[id$=advPropertyType_7_0]')
+                .click()
+                .get('[id$=advBedrooms_0]')
+                .click()
+                .type('4')
+                .get('[id$=advBathrooms_0]')
+                .click()
+                .type('2')
+                .get('[id$=advLoungeRooms_0]')
+                .click()
+                .type('2')
+
         }
 
         if (type === 'residential-rental') {
@@ -58,22 +109,43 @@ Cypress.Commands.add('addListing', (type) => {
         }
 
         command
-            .saveStaffButton()
-            .selectOK();
-
-        return command;
+            .Publishing()
+            .SaveListing()
+            .ViewListing();
     });
 });
 
-Cypress.Commands.add('saveStaffButton', () => {
+Cypress.Commands.add('Publishing', () => {
+    var randomText = 'Check out this super cool property weeow!'
+    cy.get('[id$=tc_tab04]')
+        .contains('Publishing')
+        .click()
+        .get('.spinner')
+        .should('not.be.visible')
+        .get('[id$=advInternetHeading_0]')
+        .click()
+        .type('This home is GUCCI!')
+        .get('[id$=dvInternetBody_0]')
+        .click()
+        .type(randomText)
+        .get('[id$=ctl02_rbUseExport]')
+        .click()
+        .get('[id$=ctl03_rbUseExport]')
+        .click()
+        .get('[id$=pnlExportToTradeMeHeader]')
+        .should('be.visible')
+        .get('[id$=btnYesExportToTradeMe]')
+        .click()
+});
+
+Cypress.Commands.add('SaveListing', () => {
     cy.get('[id$=uclEditSave_btnSave]')
         .contains('Save Now')
         .click()
 });
 
-Cypress.Commands.add('selectOK', () => {
-    cy.get('[id$=divCredentialHeading]', { timeout: 20000 }).should('be.visible')
-        .get('[id$=cph0_btnOk]', { timeout: 20000 })
-        .contains('Ok')
+Cypress.Commands.add('ViewListing', () => {
+    cy.get('[id$=hypViewListingPageControl]')
+        .contains('View listing')
         .click()
 });
