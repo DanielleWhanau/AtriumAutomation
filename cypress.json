@@ -10,7 +10,8 @@
     "country": "NZ",
     "urls": {
       "dashboard": "https://one-nz-stage.harcourts.net",
-      "residentialSalesListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residential"
+      "residentialSalesListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
+      "residentialRentalListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental"
     },
     "user": {
       "username": "daninz",

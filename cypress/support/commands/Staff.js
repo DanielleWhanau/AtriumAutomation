@@ -4,7 +4,6 @@ Cypress.Commands.add('newStaff', (type) => {
     return cy.then(() => {
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
-
         var selectFromList = 'li.select2-results-dept-0'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         var command = cy

@@ -6,7 +6,6 @@ Cypress.Commands.add('addListing', (type) => {
         const streetName = Faker.address.streetName();
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
-
         var agentName = 'Danielle Whanau'
         var suburb = 'Halswell'
         var selectFromList = 'li.select2-results-dept-0'
