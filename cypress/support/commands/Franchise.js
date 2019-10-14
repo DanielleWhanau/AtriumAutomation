@@ -11,17 +11,21 @@ Cypress.Commands.add('createFranchise', (type) => {
             //Enter franchise name field
             .get('[id$=tabDetails_txtName]')
             .type('Harcourts Franchise ' + name)
+            //Select State
             .get('[id$=drpState] > .select2-choice')
             .click()
             .get(selectFromList)
             .children()
             .contains('New Zealand')
             .click()
+            //Enter opening date
             .get('[id$=uclDateOpened_txtDate]')
             .click()
             .type('01/01/2018')
+            //Select Contact tab
             .get('[id$=tabContact_tab]')
-            .click() 
+            .click()  
+            //Enter minimal contact info
             .get('[id$=txtHomeNumber]')
             .click()
             .type('022 2222222')    
