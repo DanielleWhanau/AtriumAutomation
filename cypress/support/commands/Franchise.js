@@ -30,14 +30,17 @@ Cypress.Commands.add('createFranchise', (type) => {
             .click()
             .type('022 2222222')    
 
+            command.wrap({name})
+            .as('franchise')
+
         command
-            .saveStaffButton()
+            .saveButton()
 
         return command;
     });
 });
 
-Cypress.Commands.add('saveStaffButton', () => {
+Cypress.Commands.add('saveButton', () => {
     cy.get('[id$=uclEditSave_btnSave]')
         .contains('Save Now')
         .click()

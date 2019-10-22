@@ -11,7 +11,7 @@ describe('Create an Office', function () {
     });
 
     it('can create minimal office', () => {
-        cy.get('@offices').then(({ firstName, lastName }) => {
+        cy.get('@office').then(({ firstName, lastName }) => {
         })
     })
 });

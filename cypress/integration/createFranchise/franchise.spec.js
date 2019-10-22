@@ -11,7 +11,7 @@ describe('Create a Franchise', function () {
     });
 
     it('can create minimal franchise', () => {
-        cy.get('@franchises').then(({ firstName, lastName }) => {
+        cy.get('@franchise').then(({ firstName, lastName }) => {
         })
     })
 });

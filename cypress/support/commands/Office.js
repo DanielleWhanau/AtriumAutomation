@@ -189,14 +189,17 @@ Cypress.Commands.add('createOffice', (type) => {
                 .click()
         }
 
+        command.wrap({name, code})
+            .as('office')
+
         command
-            .saveStaffButton()
+            .saveButton()
 
         return command;
     });
 });
 
-Cypress.Commands.add('saveStaffButton', () => {
+Cypress.Commands.add('saveButton', () => {
     cy.get('[id$=uclEditSave_btnSave]')
         .contains('Save Now')
         .click()
