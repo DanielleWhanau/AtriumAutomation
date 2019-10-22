@@ -19,6 +19,7 @@ export const isNZ = () => Environment.country === COUNTRIES.NZ;
 export const isAU = () => Environment.country === COUNTRIES.AU;
 export const isUS = () => Environment.country === COUNTRIES.US;
 export const isZA = () => Environment.country === COUNTRIES.ZA;
+export const isID = () => Environment.country === COUNTRIES.ID;
 export const isDev = () => Environment.environment === ENVIRONMENTS.DEV;
 export const isQA = () => Environment.environment === ENVIRONMENTS.QA;
 export const isStage = () => Environment.environment === ENVIRONMENTS.STAGE;
