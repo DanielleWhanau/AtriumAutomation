@@ -4,7 +4,7 @@ import { isAU, isZA, isUS, isNZ, isID } from "../Environment";
 Cypress.Commands.add('createOffice', (type) => {
     return cy.then(() => {
         const name = Faker.name.firstName();
-        const randomText = Faker.random.alphaNumeric(3);
+        const code = Faker.random.word();
         var selectFromList = 'li.select2-results-dept-0'
         var command = cy
             //Selects which Franchise the office belongs to
@@ -27,7 +27,7 @@ Cypress.Commands.add('createOffice', (type) => {
             .type('Harcourts Office ' + name)
             .get('[id$=tabDetails_txtCode]')
             .click()
-            .type(randomText)
+            .type(code)
             //Select State
             .get('[id$=drpState] > .select2-choice')
             .click()
