@@ -90,6 +90,9 @@ Cypress.Commands.add('newStaff', (type) => {
                 .contains("Office Administrator")
                 .click({ force: true })
         }
+        
+        command.wrap({firstName, lastName})
+        .as('user')
 
         command
             .saveStaffButton()

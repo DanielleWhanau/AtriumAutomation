@@ -6,6 +6,7 @@ Cypress.Commands.add('addListing', (type) => {
         const streetName = Faker.address.streetName();
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
+        const futureDate = Faker.date.future(0.08).toLocaleDateString("ca-ES");
         var agentName = 'Danielle Whanau'
         var suburb = 'Halswell'
         var selectFromList = 'li.select2-results-dept-0'
@@ -51,46 +52,44 @@ Cypress.Commands.add('addListing', (type) => {
             .get('#geocodeResults > a')
             .contains("New Zealand")
             .click()
-            //Selects the Seller sub tab
-            .get(selectTab)
-            .contains('Sellers')
-            .click()
-            //Adds a Seller/Owner via the Add new button
-            .get('[id$=btnAddContact]', { timeout: 2000 })
-            .click()
-            .get(sellerModal)
-            .should('be.visible')
-            .get('[id$=txtFirstName]', { timeout: 2000 })
-            .click()
-            //Enters seller/owner details
-            .type(firstName)
-            .get('[id$=txtLastName]')
-            .click()
-            .type(lastName)
-            .get('[id$=txtEmailAddress]')
-            .click()
-            .type('h1.test.testers@harcourts.net')
-            .get('[id$=uclContactNewQuick_txtConfirmEmail]')
-            .click()
-            .type('h1.test.testers@harcourts.net')
-            .get("[id$=uclContactNewQuick_btnAdd]")
-            .click()
-            .get(sellerModal)
-            .should('not.be.visible')
-            //Selects the Listing sub tab
-            .get('[id$=tab4_tab]')
-            .click()
-            .get('.spinner')
-            .should('not.be.visible')
-            //Sets 'Available' status
-            .get('[id$=radStatusAvailable]', { timeout: 2000 })
-            .click()
-
-
 
         if (type === 'residential-sales') {
-            //Selects Listing Price Field
-            command.get('[id$=advMinimumPrice_0]')
+            //Selects the Seller sub tab
+            cy.get(selectTab)
+                .contains('Sellers')
+                .click()
+                //Adds a Seller via the Add new button
+                .get('[id$=btnAddContact]', { timeout: 2000 })
+                .click()
+                .get(sellerModal)
+                .should('be.visible')
+                .get('[id$=txtFirstName]', { timeout: 2000 })
+                .click()
+                //Enters seller details
+                .type(firstName)
+                .get('[id$=txtLastName]')
+                .click()
+                .type(lastName)
+                .get('[id$=txtEmailAddress]')
+                .click()
+                .type('h1.test.testers@harcourts.net')
+                .get('[id$=uclContactNewQuick_txtConfirmEmail]')
+                .click()
+                .type('h1.test.testers@harcourts.net')
+                .get("[id$=uclContactNewQuick_btnAdd]")
+                .click()
+                .get(sellerModal)
+                .should('not.be.visible')
+                //Selects the Listing sub tab
+                .get('[id$=tab4_tab]')
+                .click()
+                .get('.spinner')
+                .should('not.be.visible')
+                //Sets 'Available' status
+                .get('[id$=radStatusAvailable]', { timeout: 2000 })
+                .click()
+                //Selects Listing Price Field
+                .get('[id$=advMinimumPrice_0]')
                 .click()
                 .type('1500000')
                 //Selects Property Type sub tab
@@ -111,12 +110,49 @@ Cypress.Commands.add('addListing', (type) => {
                 .get('[id$=advLoungeRooms_0]')
                 .click()
                 .type('2')
-
         }
 
         if (type === 'residential-rental') {
-            //Selects Rent Rate Field
-            command.get('[id$=txt_advRent_0]')
+            //Selects the Owner sub tab
+            cy.get(selectTab)
+                .contains('Owners')
+                .click()
+                //Adds a Owner via the Add new button
+                .get('[id$=btnAddContact]', { timeout: 2000 })
+                .click()
+                .get(sellerModal)
+                .should('be.visible')
+                .get('[id$=txtFirstName]', { timeout: 2000 })
+                .click()
+                //Enters owner details
+                .type(firstName)
+                .get('[id$=txtLastName]')
+                .click()
+                .type(lastName)
+                .get('[id$=txtEmailAddress]')
+                .click()
+                .type('h1.test.testers@harcourts.net')
+                .get('[id$=uclContactNewQuick_txtConfirmEmail]')
+                .click()
+                .type('h1.test.testers@harcourts.net')
+                .get("[id$=uclContactNewQuick_btnAdd]")
+                .click()
+                .get(sellerModal)
+                .should('not.be.visible')
+                //Selects the Listing sub tab
+                .get('[id$=tab4_tab]')
+                .click()
+                .get('.spinner')
+                .should('not.be.visible')
+                //Sets 'Available' status
+                .get('[id$=radStatusAvailable]', { timeout: 2000 })
+                .click()
+                //Sets Available date
+                .get('[id$=advAvailableDate_0_txtDate]')
+                .click()
+                .type(futureDate)
+                //Selects Rent Rate Field
+                .get('[id$=txt_advRent_0]')
                 .click()
                 .type('500')
                 //Selects Property Type sub tab
@@ -138,6 +174,9 @@ Cypress.Commands.add('addListing', (type) => {
                 .click()
                 .type('2')
         }
+
+        command.wrap({futureDate})
+        .as('listing')
 
         command
             .Publishing()
@@ -163,7 +202,6 @@ Cypress.Commands.add('Publishing', () => {
         .get('[id$=dvInternetBody_0]')
         .click()
         .type(randomText)
-
 });
 
 Cypress.Commands.add('SaveListing', () => {
