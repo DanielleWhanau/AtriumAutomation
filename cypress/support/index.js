@@ -22,3 +22,4 @@ import '../support/commands/Listing';
 import '../support/commands/Franchise';
 import '../support/commands/Office';
 import '../support/commands/Contact';
+import '../support/commands/UpdateContact';

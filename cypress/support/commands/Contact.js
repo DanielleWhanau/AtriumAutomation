@@ -5,12 +5,11 @@ Cypress.Commands.add('createContact', (type) => {
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
         const mobile = Faker.phone.phoneNumber();
-        var selectFromList = 'li.select2-results-dept-0'
         var command = cy
             //Navigate to add contact page
             .get('[id$=miContacts]')
             .click()
-            .get(".page-controls > ul > :nth-child(4) > a")
+            .get(".page-controls > ul > :nth-child(2) > a")
             .should('be.visible')
             .click()
             //Enter Detail tab info
@@ -20,7 +19,7 @@ Cypress.Commands.add('createContact', (type) => {
             .get("[id$=txtLastName]")
             .click()
             .type(lastName)
-            .get("[id$=txtMobileNumber]") 
+            .get("[id$=txtMobileNumber]")
             .click()
             .type(mobile)
             .get("[id$=txtEmail]")
@@ -30,31 +29,16 @@ Cypress.Commands.add('createContact', (type) => {
             .click()
             .type('test@test.com')
 
-
-
-            .get(selectFromList)
-            .children()
-            .contains('New Zealand')
-            .click()
-            //
-            .get('[id$=uclDateOpened_txtDate]')
-            .click()
-            .type('01/01/2018')
-            //
-            .get('[id$=tabContact_tab]')
-            .click()  
-            //
-            .get('[id$=txtHomeNumber]')
-            .click()
-            .type('022 2222222')    
-
-            command.wrap({firstName, lastName})
-            .as('createContact')
-
         command
             .saveButton()
+            .get('[id$=cph0_lnkView]')
+            .should('be.visible')
+            .click()
 
-        return command;
+        command.wrap({ firstName, lastName })
+            .as('createContact')
+
+            return command;
     });
 });
 

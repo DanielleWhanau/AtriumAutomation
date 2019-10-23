@@ -4,14 +4,10 @@ describe('Create Sales Consultant', function () {
 
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
-        cy.loginSystemAdministrator();
-        cy.newStaff('sales-consultant')
-        
+        cy.loginSystemAdministrator();        
     });
 
     it('can create minimal sales consultant', () => {
-        cy.get('@user').then(({ firstName, lastName }) => {
-
-        })
+        cy.newStaff('sales-consultant');
     })
 });

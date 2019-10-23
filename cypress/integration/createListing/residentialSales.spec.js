@@ -5,13 +5,10 @@ describe('Create a Residential Sales Listing', function () {
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
         cy.loginSalesConstultant();
-        cy.visit(Environment.pages.residentialSalesListing);
-        cy.addListing('residential-sales');
-        
+        cy.visit(Environment.pages.residentialSalesListing);        
     });
 
     it('can create minimal residential sales listing', () => {
-        cy.get('@users').then(({ firstName, lastName }) => {
-        })
+        cy.addListing('residential-sales');
     })
 });

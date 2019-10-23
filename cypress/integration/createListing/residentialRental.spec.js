@@ -6,12 +6,9 @@ describe('Create a Residential Rental Listing', function () {
         cy.visit(Environment.pages.dashboard);
         cy.loginOfficeAdministrator();
         cy.visit(Environment.pages.residentialRentalListing);
-        cy.addListing('residential-rental');
-        
     });
 
     it('can create minimal residential rental listing', () => {
-        cy.get('@listing').then(({ firstName, lastName }) => {
-        })
+        cy.addListing('residential-rental');
     })
 });
