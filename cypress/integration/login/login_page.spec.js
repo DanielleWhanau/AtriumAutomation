@@ -7,6 +7,6 @@ describe('Login', function () {
     });
 
     it('Can login', () => {
-        cy.login();
+        cy.loginSystemAdministrator();
     });
 });

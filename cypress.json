@@ -13,9 +13,17 @@
       "residentialSalesListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
       "residentialRentalListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental"
     },
-    "user": {
+    "loginSystemAdministrator": {
       "username": "daninz",
       "password": "daninz"
+    },
+    "loginSalesConstultant": {
+      "username": "s_htester",
+      "password": "d26mg"
+    },
+    "loginOfficeAdministrator": {
+      "username": "johnnybravo",
+      "password": "pretty"
     }
   },
   "projectId": "so24xv"

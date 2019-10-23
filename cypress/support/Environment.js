@@ -9,9 +9,19 @@ export const Environment = {
         residentialSalesListing: Cypress.env('urls').residentialSalesListing,
         residentialRentalListing: Cypress.env('urls').residentialRentalListing,
     },
-    user: {
-        username: Cypress.env('user').username,
-        password: Cypress.env('user').password,
+    loginSystemAdministrator: {
+        username: Cypress.env('loginSystemAdministrator').username,
+        password: Cypress.env('loginSystemAdministrator').password,
+    },
+
+    loginSalesConstultant: {
+        username: Cypress.env('loginSalesConstultant').username,
+        password: Cypress.env('loginSalesConstultant').password,
+    },
+
+    loginOfficeAdministrator: {
+        username: Cypress.env('loginOfficeAdministrator').username,
+        password: Cypress.env('loginOfficeAdministrator').password,
     }
 };
 

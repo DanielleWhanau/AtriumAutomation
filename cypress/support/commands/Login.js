@@ -2,9 +2,9 @@ import Environment from "../Environment";
 
 Cypress.Commands.add('loginSystemAdministrator', () => {
     cy.get('input[name=username]')
-        .type(Environment.user.username)
+        .type(Environment.loginSystemAdministrator.username)
         .get('input[name=password]')
-        .type(Environment.user.password)
+        .type(Environment.loginSystemAdministrator.password)
         .get('button[type=submit]')
         .click()
         .get('h1')
@@ -14,9 +14,9 @@ Cypress.Commands.add('loginSystemAdministrator', () => {
 
 Cypress.Commands.add('loginSalesConstultant', () => {
     cy.get('input[name=username]')
-        .type(Environment.user.username)
+        .type(Environment.loginSalesConstultant.username)
         .get('input[name=password]')
-        .type(Environment.user.password)
+        .type(Environment.loginSalesConstultant.password)
         .get('button[type=submit]')
         .click()
         .get('h1')
@@ -26,9 +26,9 @@ Cypress.Commands.add('loginSalesConstultant', () => {
 
 Cypress.Commands.add('loginOfficeAdministrator', () => {
     cy.get('input[name=username]')
-        .type(Environment.user.username)
+        .type(Environment.loginOfficeAdministrator.username)
         .get('input[name=password]')
-        .type(Environment.user.password)
+        .type(Environment.loginOfficeAdministrator.password)
         .get('button[type=submit]')
         .click()
         .get('h1')

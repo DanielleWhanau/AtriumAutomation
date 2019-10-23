@@ -11,9 +11,20 @@
     "urls": {
       "login": "https://one-nz-stage.harcourts.net"
     },
-    "user": {
+    
+    "loginSystemAdministrator": {
       "username": "daninz",
       "password": "daninz"
+    },
+
+    "loginSalesConstultant": {
+      "username": "s_htester",
+      "password": "d26mg"
+    },
+   
+    "loginOfficeAdministrator": {
+      "username": "johnnybravo",
+      "password": "pretty"
     }
   },
   "projectId": "so24xv"
