@@ -1,0 +1,31 @@
+{
+  "viewportWidth": 1366,
+  "viewportHeight": 768,
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 10000,
+  "env": {
+    "manual": false,
+    "RETRIES": 2,
+    "environment": "STAGE",
+    "country": "ID",
+    "urls": {
+      "login": "https://one-id-stage.harcourts.net"
+    },
+    
+    "loginSystemAdministrator": {
+      "username": "m_dwhanau",
+      "password": "puter1234"
+    },
+
+    "loginSalesConstultant": {
+      "username": "",
+      "password": ""
+    },
+   
+    "loginOfficeAdministrator": {
+      "username": "",
+      "password": ""
+    }
+  },
+  "projectId": "so24xv"
+}
