@@ -1,4 +1,5 @@
 import Faker from 'faker';
+import { isNZ, isAU, isZA, isID, isUS } from '../Environment';
 
 Cypress.Commands.add('createFranchise', (type) => {
     return cy.then(() => {
@@ -16,10 +17,34 @@ Cypress.Commands.add('createFranchise', (type) => {
             .click()
             .get(selectFromList)
             .children()
-            .contains('New Zealand')
-            .click()
+           
+            if (isNZ()){
+                cy.contains('New Zealand')
+                .click()
+            }
+            
+            if (isAU()){
+                cy.contains('Australia')
+                .click()
+            }   
+
+            if (isID()){
+                cy.contains('Indonesia')
+                .click()
+            }   
+
+            if (isZA()){
+                cy.contains('South Africa')
+                .click()
+            }   
+
+            if (isUS()){
+                cy.contains('United States')
+                .click()
+            }   
+
             //Enter opening date
-            .get('[id$=uclDateOpened_txtDate]')
+            cy.get('[id$=uclDateOpened_txtDate]')
             .click()
             .type('01/01/2018')
             //Select Contact tab

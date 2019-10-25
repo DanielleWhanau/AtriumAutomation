@@ -1,4 +1,5 @@
 import Faker from 'faker';
+import { isNZ, isAU } from '../Environment';
 
 Cypress.Commands.add('createContact', (type) => {
     return cy.then(() => {
@@ -25,9 +26,12 @@ Cypress.Commands.add('createContact', (type) => {
             .get("[id$=txtEmail]")
             .click()
             .type('test@test.com')
-            .get("[id$=txtConfirmEmail]")
-            .click()
-            .type('test@test.com')
+
+        if (isNZ() || isAU()) {
+            cy.get("[id$=txtConfirmEmail]")
+                .click()
+                .type('test@test.com')
+        }
 
         command
             .saveButton()
@@ -38,7 +42,7 @@ Cypress.Commands.add('createContact', (type) => {
         command.wrap({ firstName, lastName })
             .as('createContact')
 
-            return command;
+        return command;
     });
 });
 
