@@ -12,11 +12,11 @@ Cypress.Commands.add('loginSystemAdministrator', () => {
         .should('exist');
 });
 
-Cypress.Commands.add('loginSalesConstultant', () => {
+Cypress.Commands.add('loginSalesConsultant', () => {
     cy.get('input[name=username]')
-        .type(Environment.loginSalesConstultant.username)
+        .type(Environment.loginSalesConsultant.username)
         .get('input[name=password]')
-        .type(Environment.loginSalesConstultant.password)
+        .type(Environment.loginSalesConsultant.password)
         .get('button[type=submit]')
         .click()
         .get('h1')

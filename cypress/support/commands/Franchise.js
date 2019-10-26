@@ -17,45 +17,21 @@ Cypress.Commands.add('createFranchise', (type) => {
             .click()
             .get(selectFromList)
             .children()
-           
-            if (isNZ()){
-                cy.contains('New Zealand')
-                .click()
-            }
-            
-            if (isAU()){
-                cy.contains('Australia')
-                .click()
-            }   
-
-            if (isID()){
-                cy.contains('Indonesia')
-                .click()
-            }   
-
-            if (isZA()){
-                cy.contains('South Africa')
-                .click()
-            }   
-
-            if (isUS()){
-                cy.contains('United States')
-                .click()
-            }   
-
+            .contains('New Zealand')
+            .click()
             //Enter opening date
-            cy.get('[id$=uclDateOpened_txtDate]')
+            .get('[id$=uclDateOpened_txtDate]')
             .click()
             .type('01/01/2018')
             //Select Contact tab
             .get('[id$=tabContact_tab]')
-            .click()  
+            .click()
             //Enter minimal contact info
             .get('[id$=txtHomeNumber]')
             .click()
-            .type('022 2222222')    
+            .type('022 2222222')
 
-            command.wrap({name})
+        command.wrap({ name })
             .as('franchise')
 
         command

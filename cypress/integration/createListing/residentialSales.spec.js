@@ -4,7 +4,7 @@ describe('Create a Residential Sales Listing', function () {
 
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
-        cy.loginSalesConstultant();
+        cy.loginSalesConsultant();
         cy.visit(Environment.pages.residentialSalesListing);        
     });
 

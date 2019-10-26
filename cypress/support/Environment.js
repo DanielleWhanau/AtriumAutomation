@@ -14,9 +14,9 @@ export const Environment = {
         password: Cypress.env('loginSystemAdministrator').password,
     },
 
-    loginSalesConstultant: {
-        username: Cypress.env('loginSalesConstultant').username,
-        password: Cypress.env('loginSalesConstultant').password,
+    loginSalesConsultant: {
+        username: Cypress.env('loginSalesConsultant').username,
+        password: Cypress.env('loginSalesConsultant').password,
     },
 
     loginOfficeAdministrator: {

@@ -4,7 +4,7 @@ describe('Create a Contact', function () {
 
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
-        cy.loginSalesConstultant();
+        cy.loginSalesConsultant();
     });
 
     it('can create minimal contact', () => {
