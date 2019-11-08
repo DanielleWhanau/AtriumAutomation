@@ -6,10 +6,22 @@ export const Environment = {
     manual: Cypress.env('manual'),
     pages: {
         dashboard: Cypress.env('urls').dashboard,
+        residentialSalesListing: Cypress.env('urls').residentialSalesListing,
+        residentialRentalListing: Cypress.env('urls').residentialRentalListing,
     },
-    user: {
-        username: Cypress.env('user').username,
-        password: Cypress.env('user').password,
+    loginSystemAdministrator: {
+        username: Cypress.env('loginSystemAdministrator').username,
+        password: Cypress.env('loginSystemAdministrator').password,
+    },
+
+    loginSalesConsultant: {
+        username: Cypress.env('loginSalesConsultant').username,
+        password: Cypress.env('loginSalesConsultant').password,
+    },
+
+    loginOfficeAdministrator: {
+        username: Cypress.env('loginOfficeAdministrator').username,
+        password: Cypress.env('loginOfficeAdministrator').password,
     }
 };
 
@@ -17,6 +29,7 @@ export const isNZ = () => Environment.country === COUNTRIES.NZ;
 export const isAU = () => Environment.country === COUNTRIES.AU;
 export const isUS = () => Environment.country === COUNTRIES.US;
 export const isZA = () => Environment.country === COUNTRIES.ZA;
+export const isID = () => Environment.country === COUNTRIES.ID;
 export const isDev = () => Environment.environment === ENVIRONMENTS.DEV;
 export const isQA = () => Environment.environment === ENVIRONMENTS.QA;
 export const isStage = () => Environment.environment === ENVIRONMENTS.STAGE;

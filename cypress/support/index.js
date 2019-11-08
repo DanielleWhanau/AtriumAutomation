@@ -15,17 +15,17 @@
 import 'cypress-plugin-retries';
 import './ManualTest';
 import './CustomSpec';
-import './WaitUtil';
-import './Login';
-
-export const fixCypressSpec = filename => () => {
-    const path = require('path');
-    const relative = filename.substr(1); // removes leading "/"
-    const projectRoot = Cypress.config('projectRoot');
-    const absolute = path.join(projectRoot, relative);
-    Cypress.spec = {
-        absolute,
-        name: path.basename(filename),
-        relative
-    }
-};
+import './WaitUntil';
+import '../support/commands/Login';
+import '../support/commands/Staff';
+import '../support/commands/Listing';
+import '../support/commands/Franchise';
+import '../support/commands/Office';
+import '../support/commands/Contact';
+import '../support/commands/UpdateContact';
+import '../support/commands/Tasks';
+import '../support/commands/RecurringTasks';
+import '../support/commands/OpenHomes';
+import '../support/commands/Inspections';
+import '../support/commands/Enquiries';
+import '../support/commands/Hazards';

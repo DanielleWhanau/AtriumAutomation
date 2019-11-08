@@ -1,12 +1,13 @@
 import Environment from "../../support/Environment";
 
-describe('Login', function () {
+describe('Create Office Adminsitrator', function () {
 
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
-    });
-
-    it('Can login', () => {
         cy.loginSystemAdministrator();
     });
+
+    it('can create minimal office administrator', () => {
+        cy.newStaff('office-administrator')
+    })
 });

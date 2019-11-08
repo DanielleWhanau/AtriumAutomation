@@ -7,24 +7,25 @@
     "manual": false,
     "RETRIES": 2,
     "environment": "STAGE",
-    "country": "NZ",
+    "country": "ZA",
+    "office": "Harcourts Office Zooloo",
     "urls": {
-      "login": "https://one-nz-stage.harcourts.net"
+      "login": "https://one-za-stage.harcourts.net"
     },
     
     "loginSystemAdministrator": {
-      "username": "daninz",
-      "password": "daninz"
+      "username": "m_dwhanau",
+      "password": "puter1234"
     },
 
     "loginSalesConsultant": {
-      "username": "s_htester",
-      "password": "d26mg"
+      "username": "",
+      "password": ""
     },
    
     "loginOfficeAdministrator": {
-      "username": "johnnybravo",
-      "password": "pretty"
+      "username": "",
+      "password": ""
     }
   },
   "projectId": "so24xv"

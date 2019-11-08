@@ -1,7 +1,7 @@
-import { BRANDS } from "./Constants";
+import { COUNTRIES } from "./Constants";
 
 const HeaderNavigation = {
-    [BRANDS.AU]: {
+    [COUNTRIES.AU]: {
         'Buy': [
             'Buy with Harcourts',
             'Residential',
@@ -36,7 +36,7 @@ const HeaderNavigation = {
         ],
         'Contact Us': null,
     },
-    [BRANDS.NZ]: {
+    [COUNTRIES.NZ]: {
         'Buy': [
             'Buy with Harcourts',
             'Residential',
@@ -72,7 +72,7 @@ const HeaderNavigation = {
         ],
         'Contact Us': null,
     },
-    [BRANDS.US]: {
+    [COUNTRIES.US]: {
         'Buy': [
             'Residential',
             'Commercial',
@@ -95,7 +95,7 @@ const HeaderNavigation = {
         ],
         'Contact Us': null,
     },
-    [BRANDS.ZA]: {
+    [COUNTRIES.ZA]: {
         'Buy': [
             'Residential',
             'Commercial',

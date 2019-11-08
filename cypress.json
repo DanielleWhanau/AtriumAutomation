@@ -6,14 +6,24 @@
   "env": {
     "manual": false,
     "RETRIES": 2,
-    "environment": "QA",
+    "environment": "STAGE",
     "country": "NZ",
     "urls": {
-      "dashboard": "https://one-nz-stage.harcourts.net"
+      "dashboard": "https://one-nz-stage.harcourts.net",
+      "residentialSalesListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
+      "residentialRentalListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental"
     },
-    "user": {
-      "username": "dontusethis",
-      "password": "dontusethis"
+    "loginSystemAdministrator": {
+      "username": "daninz",
+      "password": "daninz"
+    },
+    "loginSalesConsultant": {
+      "username": "s_htester",
+      "password": "d26mg"
+    },
+    "loginOfficeAdministrator": {
+      "username": "johnnybravo",
+      "password": "pretty"
     }
   },
   "projectId": "so24xv"
