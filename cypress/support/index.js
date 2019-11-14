@@ -29,3 +29,4 @@ import '../support/commands/OpenHomes';
 import '../support/commands/Inspections';
 import '../support/commands/Enquiries';
 import '../support/commands/Hazards';
+import '../support/commands/Appraisal';
