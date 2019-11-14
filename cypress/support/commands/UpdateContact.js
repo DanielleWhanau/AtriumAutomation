@@ -4,7 +4,7 @@ Cypress.Commands.add('updateContact', (type) => {
     return cy.then(() => {
         const companyName = Faker.name.jobTitle();
         var command = cy
-            //Navigate to edit contact page
+            //Navigate to edit contact page and update company name
             .get('[id$=tabDetails_txtCompanyName]')
             .click()
             .clear()

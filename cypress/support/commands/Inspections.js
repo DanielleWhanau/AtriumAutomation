@@ -21,12 +21,15 @@ Cypress.Commands.add('addInspections', (type) => {
             .click()
             .get('.spinner')
             .should('not.be.visible')
+            //Enter contact first name
             .get('[id$=uclNewListingInspectionEdit_uclContactNewQuick_txtFirstName]')
             .click()
             .type(firstName)
+            //Enter contact last name
             .get('[id$=uclNewListingInspectionEdit_uclContactNewQuick_txtLastName]')
             .click()
             .type(lastName)
+            //Enter contact number
             .get('[id$=uclNewListingInspectionEdit_uclContactNewQuick_txtHomeNumber]')
             .click()
             .type('022 2222222')
