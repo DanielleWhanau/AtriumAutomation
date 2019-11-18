@@ -115,7 +115,7 @@ Cypress.Commands.add('newStaff', (type) => {
 
         command
             .saveStaffButton()
-            .selectOK();
+            //.selectOK();
 
         return command;
     });

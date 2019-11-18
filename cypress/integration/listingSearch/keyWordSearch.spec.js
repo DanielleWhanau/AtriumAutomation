@@ -11,7 +11,4 @@ describe('Tests the listing search functionality on the Listing Search page', fu
     it('Tests Keyword search on the listing search page', () => {
         cy.keyWordSearch();
     })
-    it('Tests Advanced listing search on the listing search page', () => {
-        cy.advancedListingSearch();
-    })
 });

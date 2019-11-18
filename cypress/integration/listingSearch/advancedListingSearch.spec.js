@@ -1,6 +1,6 @@
 import Environment from "../../support/Environment";
 
-describe('Tests the listing search functionality on the Listing Search page', function () {
+describe('Tests advanced listing search functionality on the Listing Search page', function () {
 
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
@@ -8,7 +8,7 @@ describe('Tests the listing search functionality on the Listing Search page', fu
         cy.visit('https://one-nz-stage.harcourts.net/Listings/Residential.aspx')
     });
 
-    it('Tests Keyword search on the listing search page', () => {
+    it('Tests Advanced listing search on the listing search page', () => {
         cy.advancedListingSearch();
     })
 });
