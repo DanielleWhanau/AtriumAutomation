@@ -33,3 +33,4 @@ import '../support/commands/Appraisal';
 import '../support/commands/KeyWordSearch';
 import '../support/commands/AdvancedListingSearch';
 import '../support/commands/EditEnquiries';
+import '../support/commands/DeleteEnquiries';
