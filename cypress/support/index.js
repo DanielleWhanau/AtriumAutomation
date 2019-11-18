@@ -30,3 +30,5 @@ import '../support/commands/Inspections';
 import '../support/commands/Enquiries';
 import '../support/commands/Hazards';
 import '../support/commands/Appraisal';
+import '../support/commands/KeyWordSearch';
+import '../support/commands/AdvancedListingSearch';
