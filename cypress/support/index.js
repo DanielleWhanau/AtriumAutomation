@@ -27,6 +27,8 @@ import '../support/commands/Tasks';
 import '../support/commands/RecurringTasks';
 import '../support/commands/OpenHomes';
 import '../support/commands/Inspections';
+import '../support/commands/EditInspection';
+import '../support/commands/DeleteInspection';
 import '../support/commands/Appraisal';
 import '../support/commands/KeyWordSearch';
 import '../support/commands/AdvancedListingSearch';
