@@ -18,13 +18,13 @@
     },
 
     "loginSalesConsultant": {
-      "username": "",
-      "password": ""
+      "username": "m_ngriffin",
+      "password": "w13jm"
     },
    
     "loginOfficeAdministrator": {
-      "username": "",
-      "password": ""
+      "username": "mkuser",
+      "password": "ios"
     }
   },
   "projectId": "so24xv"
