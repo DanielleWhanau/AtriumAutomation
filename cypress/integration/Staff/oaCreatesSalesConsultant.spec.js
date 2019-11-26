@@ -4,7 +4,7 @@ describe('Create Sales Consultant', function () {
 
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
-        cy.loginSalesConsultant();
+        cy.loginOfficeAdministrator();
     });
 
     it('can create minimal sales consultant', () => {
