@@ -7,7 +7,8 @@ Cypress.Commands.add('addInspections', (type) => {
         const lastName = Faker.name.lastName();
         const text = Faker.lorem.sentence();
         //Adds Inspections to my listing
-        cy.get('[id$=tabInspection_tab]')
+        cy.get('[id$=tabInspection_tab]', { timeout: 5000 })
+            .contains('Inspections')
             .click( { force: true} )
             //Select Add New button on page
             .get('[id$=uclListingInspectionListEdit_hypAddNewInspection]', { timeout: 5000 })
