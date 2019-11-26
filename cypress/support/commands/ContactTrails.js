@@ -1,134 +1,19 @@
-import Faker from 'faker';
-
-Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
+Cypress.Commands.add('createContactTrail', (type) => {
     return cy.then(() => {
-        const streetNumber = Faker.random.number(100);
-        const streetName = Faker.address.streetName();
-        const firstName = Faker.name.firstName();
-        const lastName = Faker.name.lastName();
-        const futureDate = Faker.date.future(0.08).toLocaleDateString("ca-ES");
-        var suburb = 'Halswell'
         var selectFromList = 'li.select2-results-dept-0'
-        var sellerModal = '#divContactNewQuick > .modalBody'
-        var selectTab = '.ajax__tab_header span.ajax__tab_tab'
-        //Add a Seller via the 'Add New' button
-        cy.get('[id$=btnAddContact]', { timeout: 2000 })
+        //Select 'Create New' button
+        cy.get(':nth-child(2) > .panel-content > .panel-anchor-button > .block', { timeout: 2000 })
             .click()
-            //Makes sure edit container is visible and selects....
-            .get(sellerModal)
-            .should('be.visible')
-            //Enter Contact Firstname 
-            .get('[id$=txtFirstName]', { timeout: 2000 })
+            //Enter Template name field
+            .get('[id$=CommunicationTemplateName]')
             .click()
-            .type(firstName)
-            //Enter Contact Lastname 
-            .get('[id$=txtLastName]')
+            .type('Test Template')
+            //Enter Template Description
+            .get("[id$=Description]") 
             .click()
-            .type(lastName)
-            //Enter Contact Email Address
-            .get('[id$=txtEmailAddress]')
+            .type('Test Description')
+            //Save Template Basic Info
+            .get(":nth-child(1) > .ui-button-text")
             .click()
-            .type('h1.test.testers@harcourts.net')
-            //Confirm Contact Email Address
-            .get('[id$=uclContactNewQuick_txtConfirmEmail]')
-            .click()
-            .type('h1.test.testers@harcourts.net')
-            //Select the Add Contact button
-            .get("[id$=uclContactNewQuick_btnAdd]")
-            .click()
-            //Makes sure the edit container is not visible
-            .get(sellerModal)
-            .should('not.be.visible')
-            //Select Property Details tab
-            .get('[id$=tabPropertyDetails_tab]')
-            .click()
-            //Enter Appraisal Street Number
-            .get('[id$=txtStreetNumber]')
-            .click()
-            .type(streetNumber)
-            //Enter Appraisal Street Name
-            .get('[id$=txtStreetName]')
-            .type(streetName)
-            //Search and Select Appraisal Suburb
-            .get("[id$=ajaxSearchLocation_hidSelectedID] > .select2-choice > .select2-arrow")
-            .click()
-            .get('#s2id_autogen20_search')
-            .click()
-            .type(suburb)
-            //Ensure the Search text in 'progress' is not visible
-            .get('.select2-searching')
-            .should('not.be.visible')
-            .get(selectFromList, { timeout: 2000 })
-            .contains(suburb, { timeout: 2000 })
-            .click()
-            //Makes sure the loading 'H' spinner is not visible
-            .get('.spinner')
-            .should('not.be.visible')
-            //Select Appraisal Property type House, Unit, Apartment etc.
-            .get('#s2id_ctl00_cph0_tcAppraisal_tabPropertyDetails_drpPropertyType > .select2-choice')
-            .click()
-            .get(selectFromList, { timeout: 2000 })
-            .contains('House')
-            .click()
-            //Set bedrooms
-            .get('[id$=txtBedrooms]')
-            .click()
-            .type('5')
-            //Set bathrooms
-            .get('[id$=txtBathrooms]')
-            .click()
-            .type('3')
-            //Selects Map tab
-            .get(selectTab)
-            .contains('Map')
-            .click()
-            //Confirm possible map location
-            .get(".listing-edit-map", { timeout: 30000 })
-            .should("be.visible")
-            .get('#geocodeResults > a')
-            .contains("New Zealand")
-            .click()
-            //Selects Tasks tab
-            .get(selectTab)
-            .contains('Tasks')
-            .click()
-            //Add single Task details
-            .get('[id$=btnAddNewTask]')
-            .click()
-            .get('#divEditTask')
-            .should('be.visible')
-            //Task description
-            .get('[id$=uclTaskEdit_txtDescription]')
-            .click()
-            .type('Testing Tasks')
-            //Task date
-            .get('[id$=uclTaskEdit_uclDueDateTime_txtDate]')
-            .click()
-            .type(futureDate)
-            //Task time
-            .get('[id$=uclTaskEdit_uclDueTime_txtTimeDisplay]')
-            .click()
-            .type('10.00')
-            //Select save task button
-            .get('[id$=uclTaskListView_TaskAddModal_btnSave]')
-            .click()
-            .get('.spinner')
-            //Selects CMA tab
-            .should('not.be.visible')
-            .get(selectTab)
-            .contains('CMA')
-            .click()
-            //Generates search results for criteria set
-            .get('[id$=btnSearch]')
-            .click()
-            .get('.spinner', { timeout: 30000 })
-            .should('not.be.visible')
-            //Save Appraisal
-            .get('[id$=uclEditSave_btnSave]')
-            .click()
-            .get('.spinner')
-            .should('not.be.visible')
-            //Logs it is done
-            .log('Appraisal added')
     });
 });

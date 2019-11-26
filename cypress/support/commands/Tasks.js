@@ -2,7 +2,7 @@ import Faker from 'faker';
 
 Cypress.Commands.add('createTasks', (type) => {
     return cy.then(() => {
-        const futureDate = Faker.date.future(0.08).toLocaleDateString("ca-ES");
+        const futureDate = Faker.date.future(0.08).toLocaleDateString("nz-ES");
             //Select Add new Task
             cy.get('.page-controls > ul > :nth-child(1) > a')
             .click()

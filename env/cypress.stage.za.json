@@ -19,13 +19,13 @@
     },
 
     "loginSalesConsultant": {
-      "username": "",
-      "password": ""
+      "username": "s_tuser",
+      "password": "j38sd1"
     },
    
     "loginOfficeAdministrator": {
-      "username": "",
-      "password": ""
+      "username": "tyra",
+      "password": "moodley"
     }
   },
   "projectId": "so24xv"

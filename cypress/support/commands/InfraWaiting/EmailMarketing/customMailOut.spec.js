@@ -1,4 +1,4 @@
-import Environment from "../../support/Environment";
+import Environment from "../../../Environment";
 
 describe('Create Custom Mailout Email Marketing piece', function () {
 
