@@ -43,3 +43,5 @@ import '../support/commands/EditHazards';
 import '../support/commands/DeleteHazards';
 import '../support/commands/EmailMarketing';
 import '../support/commands/GlobalSearch';
+import '../support/commands/CCGProducts';
+import '../support/commands/ContactTrails';
