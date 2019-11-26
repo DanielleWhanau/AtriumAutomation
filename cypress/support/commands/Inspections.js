@@ -8,41 +8,40 @@ Cypress.Commands.add('addInspections', (type) => {
         const text = Faker.lorem.sentence();
         //Adds Inspections to my listing
         cy.get('[id$=tabInspection_tab]')
-            .click()
+            .click( { force: true} )
             //Select Add New button on page
             .get('[id$=uclListingInspectionListEdit_hypAddNewInspection]')
-            .click()
+            .click( { force: true} )
             //Enter Inspection date
             .get('[id$=uclNewListingInspectionEdit_dtDateInspectedDateTime_txtDate]')
-            .click()
+            .click( { force: true} )
             .type(futureDate)
             //Add Contact - via Add New Contact option
             .get('[id$=uclNewListingInspectionEdit_btnAddContact]')
-            .click()
+            .click( { force: true} )
             .get('.spinner')
             .should('not.be.visible')
             //Enter contact first name
             .get('[id$=uclNewListingInspectionEdit_uclContactNewQuick_txtFirstName]')
-            .click()
+            .click( { force: true} )
             .type(firstName)
             //Enter contact last name
             .get('[id$=uclNewListingInspectionEdit_uclContactNewQuick_txtLastName]')
-            .click()
+            .click( { force: true} )
             .type(lastName)
             //Enter contact number
             .get('[id$=uclNewListingInspectionEdit_uclContactNewQuick_txtHomeNumber]')
-            .click()
+            .click( { force: true} )
             .type('022 2222222')
             //Save contact
             .get('[id$=tabInspection_uclListingInspectionListEdit_uclNewListingInspectionEdit_uclContactNewQuick_btnAdd]')
-            .click()
+            .click( { force: true} )
             //Add Inspection comment
             .get('[id$=uclNewListingInspectionEdit_txtComment]')
-            .click()
+            .click( { force: true} )
             .type(text)
             //Save Inspection
             .get('[id$=uclNewListingInspectionEdit_btnAdd]')
-            .click()
-
+            .click( { force: true} )
     })
 });
