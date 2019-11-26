@@ -5,7 +5,7 @@
   "defaultCommandTimeout": 10000,
   "env": {
     "manual": false,
-    "RETRIES": 2,
+    "RETRIES": 0,
     "environment": "STAGE",
     "country": "NZ",
     "urls": {

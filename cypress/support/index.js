@@ -41,3 +41,5 @@ import '../support/commands/DeleteEnquiries';
 import '../support/commands/Hazards';
 import '../support/commands/EditHazards';
 import '../support/commands/DeleteHazards';
+import '../support/commands/EmailMarketing';
+import '../support/commands/GlobalSearch';
