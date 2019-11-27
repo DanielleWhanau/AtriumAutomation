@@ -26,7 +26,15 @@ export const COUNTRYNAME = {
     AU: 'Australia',
     US: 'United States',
     ID: 'Indonesia',
-    ZA: 'South Africa'
+    ZA: 'Johannesburg'
+};
+
+export const STATENAME = {
+    NZ: 'New Zealand',
+    AU: 'Australia',
+    US: 'United States',
+    ID: 'Indonesia',
+    ZA: 'Gauteng'
 };
 
 export const AGENTNAME = {

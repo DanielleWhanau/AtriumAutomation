@@ -1,21 +1,22 @@
 import Faker from 'faker';
 import { isAU, isZA, isUS, isNZ, isID } from "../Environment";
-import { COUNTRYNAME } from "../../fixtures/Constants";
+import { COUNTRYNAME, STATENAME } from "../../fixtures/Constants";
 import { Environment } from "../Environment"
 
 Cypress.Commands.add('createOffice', (type) => {
     return cy.then(() => {
         const name = Faker.name.firstName();
-        const code = Faker.random.word();
+        const code = Faker.random.word(1);
         var selectFromList = 'li.select2-results-dept-0'
         var countryName = COUNTRYNAME[Environment.country]
+        var stateName = STATENAME[Environment.country]
         var command = cy
             //Selects which Franchise the office belongs to
             .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
             .click()
             .get('#s2id_autogen7_search')
             .click()
-            .type('Harcourts Group')
+            .type('Harcourts')
             .get(selectFromList)
             .first()
             .click()
@@ -31,15 +32,29 @@ Cypress.Commands.add('createOffice', (type) => {
             .get('[id$=tabDetails_txtCode]')
             .click()
             .type(code)
+
+        if (isNZ() || isAU() || isID() || isUS()) {
             //Select State
-            .get('[id$=drpState] > .select2-choice')
-            .click()
-            .get(selectFromList)
-            .children()
-            .contains(countryName)
-            .click()
-            //Enter opening date
-            .get('[id$=uclDateOpened_txtDate]')
+            cy.get('[id$=drpState] > .select2-choice')
+                .click()
+                .get(selectFromList)
+                .children()
+                .contains(countryName)
+                .click()
+        }
+
+        if (isZA()) {
+            //Select State
+            cy.get('[id$=drpState] > .select2-choice')
+                .click()
+                .get(selectFromList)
+                .children()
+                .contains(stateName)
+                .click()
+        }
+
+        //Enter opening date
+        cy.get('[id$=uclDateOpened_txtDate]')
             .click()
             .type('01/01/2018')
             //Select Contact tab
@@ -49,10 +64,16 @@ Cypress.Commands.add('createOffice', (type) => {
             .get('[id$=txtEmail]')
             .click()
             .type('test@test.com')
-            .get('[id$=txtConfirmEmail]')
-            .click()
-            .type('test@test.com')
-            .get('[id$=txtHomeNumber]')
+
+        if (isNZ() || isAU()) {
+            //Confirm email only necessary in NZ and AU
+            cy.type('test@test.com')
+                .get('[id$=txtConfirmEmail]')
+                .click()
+                .type('test@test.com')
+        }
+
+        cy.get('[id$=txtHomeNumber]')
             .click()
             .type('022 2222222')
             //Select System tab
@@ -137,10 +158,11 @@ Cypress.Commands.add('createOffice', (type) => {
                 .get(selectFromList)
                 .first()
                 .click()
+                .wait(3000)
                 //Type and select catchment area name    
-                .get('[id$=uclAjaxSearchLocation_hidSelectedID]')
+                .get('[id$=tabCatchmentAreas_uclAjaxSearchLocation_hidSelectedID] > .select2-choice', { timeout: 5000 })
                 .click()
-                .get('.select2-input')
+                .get('#select2-drop > .select2-search')
                 .click()
                 .find('input')
                 .first()
@@ -192,7 +214,7 @@ Cypress.Commands.add('createOffice', (type) => {
                 .click()
         }
 
-        command.wrap({name, code})
+        command.wrap({ name, code })
             .as('office')
 
         command

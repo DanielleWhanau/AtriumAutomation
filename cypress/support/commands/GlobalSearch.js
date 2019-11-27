@@ -1,5 +1,6 @@
 import { CONTACTNAME, DIRECTORYWORD } from "../../fixtures/Constants";
 import { Environment } from "../Environment"
+import { isNZ, isAU } from '../Environment';
 
 Cypress.Commands.add('globalSearch', (type) => {
     return cy.then(() => {
@@ -66,7 +67,6 @@ Cypress.Commands.add('globalSearch', (type) => {
                 .get(selectFromList)
                 .first()
                 .click({ force: true })
-
         }
 
     });
