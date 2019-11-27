@@ -1,4 +1,7 @@
 import Faker from 'faker';
+import { SUBURB, COUNTRYNAME } from "../../fixtures/Constants";
+import { Environment } from "../Environment"
+import { isNZ, isAU, isZA } from '../Environment';
 
 Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
     return cy.then(() => {
@@ -7,7 +10,8 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
         const futureDate = Faker.date.future(0.08).toLocaleDateString("ca-ES");
-        var suburb = 'Halswell'
+        var suburb = SUBURB[Environment.country]
+        var countryName = COUNTRYNAME[Environment.country]
         var selectFromList = 'li.select2-results-dept-0'
         var sellerModal = '#divContactNewQuick > .modalBody'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
@@ -29,15 +33,25 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             .get('[id$=txtEmailAddress]')
             .click()
             .type('h1.test.testers@harcourts.net')
-            //Confirm Contact Email Address
-            .get('[id$=uclContactNewQuick_txtConfirmEmail]')
-            .click()
-            .type('h1.test.testers@harcourts.net')
-            //Select the Add Contact button
-            .get("[id$=uclContactNewQuick_btnAdd]")
+
+        //NZ + AU have confirm email all others don't        
+        if (isNZ() || isAU()) {
+            cy.get("[id$=uclContactNewQuick_txtConfirmEmail]")
+                .click()
+                .type('h1.test.testers@harcourts.net')
+        }
+
+        if (isZA()) {
+            cy.get("[id$=uclContactNewQuick_txtHomeNumber]")
+                .click()
+                .type('123456789')
+        }
+
+        //Select the Add Contact button
+        cy.get("[id$=uclContactNewQuick_btnAdd]")
             .click()
             //Makes sure the edit container is not visible
-            .get(sellerModal)
+            .get('.spinner')
             .should('not.be.visible')
             //Select Property Details tab
             .get('[id$=tabPropertyDetails_tab]')
@@ -56,7 +70,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             .click()
             .type(suburb)
             //Ensure the Search text in 'progress' is not visible
-            .get('.select2-searching')
+            .get('.select2-searching', { timeout: 2000 })
             .should('not.be.visible')
             .get(selectFromList, { timeout: 2000 })
             .contains(suburb, { timeout: 2000 })
@@ -86,7 +100,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             .get(".listing-edit-map", { timeout: 30000 })
             .should("be.visible")
             .get('#geocodeResults > a')
-            .contains("New Zealand")
+            .contains(countryName)
             .click()
             //Selects Tasks tab
             .get(selectTab)

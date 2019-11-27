@@ -5,7 +5,7 @@ describe('Create Feature Listing Email Marketing piece', function () {
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
         cy.loginSalesConsultant();
-        cy.visit('https://one-nz-stage.harcourts.net/EmailMarketing/Mailout.aspx?tmpl=2');
+        cy.visit('/EmailMarketing/Mailout.aspx?tmpl=2');
     });
 
     it('can create a minimal feature listing email marketing piece', () => {

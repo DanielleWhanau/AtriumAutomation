@@ -1,11 +1,14 @@
 import Faker from 'faker';
 import { isAU, isZA, isUS, isNZ, isID } from "../Environment";
+import { COUNTRYNAME } from "../../fixtures/Constants";
+import { Environment } from "../Environment"
 
 Cypress.Commands.add('createOffice', (type) => {
     return cy.then(() => {
         const name = Faker.name.firstName();
         const code = Faker.random.word();
         var selectFromList = 'li.select2-results-dept-0'
+        var countryName = COUNTRYNAME[Environment.country]
         var command = cy
             //Selects which Franchise the office belongs to
             .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
@@ -33,7 +36,7 @@ Cypress.Commands.add('createOffice', (type) => {
             .click()
             .get(selectFromList)
             .children()
-            .contains('New Zealand')
+            .contains(countryName)
             .click()
             //Enter opening date
             .get('[id$=uclDateOpened_txtDate]')

@@ -1,4 +1,6 @@
 import Faker from 'faker';
+import { OFFICENAME } from "../../fixtures/Constants";
+import { Environment } from "../Environment"
 
 Cypress.Commands.add('newStaff', (type) => {
     return cy.then(() => {
@@ -6,6 +8,7 @@ Cypress.Commands.add('newStaff', (type) => {
         const lastName = Faker.name.lastName();
         var selectFromList = 'li.select2-results-dept-0'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
+        var officeName = OFFICENAME[Environment.country]
         var command = cy
             .get('[id$=hypAddStaff]')
             .contains('Add New Staff')
@@ -37,10 +40,10 @@ Cypress.Commands.add('newStaff', (type) => {
             .get('#select2-drop > div:nth-child(1) > input')
             .click()
             //Finding and selecting specific office from drop down list...
-            .type('Harcourts Greytown')
+            .type(officeName)
             .get(selectFromList)
             .children()
-            .contains('Harcourts Greytown (Branch)')
+            .contains(officeName)
             .first()
             .click()
             //Confirming office selection..
@@ -89,10 +92,10 @@ Cypress.Commands.add('newStaff', (type) => {
                 .get('#select2-drop > div:nth-child(1) > input')
                 .click()
                 //Finding and selecting specific office from drop down list...
-                .type('Harcourts Greytown')
+                .type(officeName)
                 .get(selectFromList)
                 .children()
-                .contains('Harcourts Greytown (Branch)')
+                .contains(officeName)
                 .first()
                 .click()
                 //Confirming office selection..

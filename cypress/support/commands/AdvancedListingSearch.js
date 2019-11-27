@@ -1,6 +1,10 @@
+import { AGENTNAME } from "../../fixtures/Constants";
+import { Environment } from "../Environment"
+
 Cypress.Commands.add('advancedListingSearch', (type) => {
     return cy.then(() => {
         var selectFromList = "li.select2-results-dept-0"
+        var agentName = AGENTNAME[Environment.country]
         //Select 'More' Search option
         cy.get('[id$=ucListingSearchWithin_drpSearchWithin] > .select2-choice > .select2-arrow', { timeout: 2000 })
             .click()
@@ -16,7 +20,7 @@ Cypress.Commands.add('advancedListingSearch', (type) => {
             .click()
             .get('#select2-drop > div:nth-child(1) > input')
             .click()
-            .type('HarcourtsOne tester')
+            .type(agentName)
             .get(".select2-searching", { timeout: 30000 })
             .should('not.be.visible')
             .get(selectFromList)

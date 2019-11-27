@@ -1,8 +1,11 @@
+import { CONTACTNAME, DIRECTORYWORD } from "../../fixtures/Constants";
+import { Environment } from "../Environment"
+
 Cypress.Commands.add('globalSearch', (type) => {
     return cy.then(() => {
         var listing = 'HIL'
-        var contact = 'Franz Reynolds'
-        var directoryWord = 'Danielle Whanau'
+        var contactName = CONTACTNAME[Environment.country]
+        var directoryWord = DIRECTORYWORD[Environment.country]
         var product = 'Email Address'
         var globalSearchIcon = '.global-search-container > button'
         var selectFromList = 'li.select2-results-dept-0'
@@ -31,7 +34,7 @@ Cypress.Commands.add('globalSearch', (type) => {
             //Select Contact input
             .get('#s2id_autogen2_search')
             .click()
-            .type(contact)
+            .type(contactName)
             .get(selectFromList)
             .first()
             .click({ force: true })
@@ -48,19 +51,23 @@ Cypress.Commands.add('globalSearch', (type) => {
             .get(selectFromList)
             .first()
             .click({ force: true })
+
+        if (isNZ() || isAU()) {
             //Select 'Global search' option again
-            .get(globalSearchIcon)
-            .click()
-            //Select Product tab
-            .get(".global-search-type > :nth-child(5) > button")
-            .click()
-            //Select Product input
-            .get('#s2id_autogen5_search')
-            .click()
-            .type(product)
-            .get(selectFromList)
-            .first()
-            .click({ force: true })
+            cy.get(globalSearchIcon)
+                .click()
+                //Select Product tab
+                .get(".global-search-type > :nth-child(5) > button")
+                .click()
+                //Select Product input
+                .get('#s2id_autogen5_search')
+                .click()
+                .type(product)
+                .get(selectFromList)
+                .first()
+                .click({ force: true })
+
+        }
 
     });
 });

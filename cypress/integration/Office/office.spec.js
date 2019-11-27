@@ -5,7 +5,7 @@ describe('Create an Office', function () {
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
         cy.loginSystemAdministrator();
-        cy.visit('https://one-nz-stage.harcourts.net/Directory/OrganisationalUnitEdit.aspx');       
+        cy.visit(Environment.pages.dashboard+'Directory/OrganisationalUnitEdit.aspx');       
     });
 
     it('can create minimal office', () => {

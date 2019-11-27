@@ -1,9 +1,11 @@
 import Faker from 'faker';
+import { SUBURB } from "../../fixtures/Constants";
+import { Environment } from "../Environment"
 
 Cypress.Commands.add('addStandaloneCMA', (type) => {
     return cy.then(() => {
         const title = Faker.name.title();
-        var suburb = 'Halswell'
+        var suburb = SUBURB[Environment.country]
         var selectFromList = 'li.select2-results-dept-0'
         //Enter CMA Name
         cy.get('[id$=uclCMA_txtComparativeMarketAnalysisName]')

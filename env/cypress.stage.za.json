@@ -10,7 +10,8 @@
     "country": "ZA",
     "office": "Harcourts Office Zooloo",
     "urls": {
-      "login": "https://one-za-stage.harcourts.net"
+      "dashboard": "https://one-za-stage.harcourts.net/",
+      "residentialSalesListing":"https://one-za-stage.harcourts.net/Listings/View.aspx?id=343775"
     },
     
     "loginSystemAdministrator": {

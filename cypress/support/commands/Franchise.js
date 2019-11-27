@@ -1,10 +1,12 @@
 import Faker from 'faker';
-import { isNZ, isAU, isZA, isID, isUS } from '../Environment';
+import { Environment } from "../Environment"
 
 Cypress.Commands.add('createFranchise', (type) => {
     return cy.then(() => {
         const name = Faker.name.firstName();
         var selectFromList = 'li.select2-results-dept-0'
+        var countryName = COUNTRYNAME[Environment.country]
+
         var command = cy
             //Selects Cancel out of creating an office (top create a franchise)
             .get('[id$=tabDetails_btnCancel')
@@ -17,12 +19,12 @@ Cypress.Commands.add('createFranchise', (type) => {
             .click()
             .get(selectFromList)
             .children()
-            .contains('New Zealand')
+            .contains(countryName)
             .click()
             //Enter opening date
             .get('[id$=uclDateOpened_txtDate]')
             .click()
-            .type('01/01/2018')
+            .type('01/01/2019')
             //Select Contact tab
             .get('[id$=tabContact_tab]')
             .click()

@@ -9,7 +9,8 @@
     "environment": "STAGE",
     "country": "ID",
     "urls": {
-      "login": "https://one-id-stage.harcourts.net"
+      "dashboard": "https://one-id-stage.harcourts.net/",
+      "residentialSalesListing":"https://one-id-stage.harcourts.net/Listings/View.aspx?id=39282"
     },
     
     "loginSystemAdministrator": {

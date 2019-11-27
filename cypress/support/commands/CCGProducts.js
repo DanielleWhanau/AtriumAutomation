@@ -1,3 +1,5 @@
+import { isNZ, isAU } from '../Environment';
+
 Cypress.Commands.add('purchaseProduct', (type) => {
     return cy.then(() => {
         Cypress.on('uncaught:exception', (err, runnable) => {
@@ -6,24 +8,29 @@ Cypress.Commands.add('purchaseProduct', (type) => {
             return false;
         })
 
-        var command = cy
-        if (type === 'email-purchase') {
-            //Accept T&C's
-            cy.get('#AcceptTermsAndConditions')
-                .click()
-                .get('.button')
-                .click()
+        if (isNZ() || isAU()) {
+            var command = cy
+            if (type === 'email-purchase') {
+                //Accept T&C's
+                cy.visit(Environment.pages.dashboard+'/Apps/Products/Product.mvc/EmailAddressPurchase')
+                cy.get('#AcceptTermsAndConditions')
+                    .click()
+                    .get('.button')
+                    .click()
+            }
+
+            if (type === 'website-purchase') {
+                //Accept T&C's
+                cy.visit(Environment.pages.dashboard+'/Apps/Products/Product.mvc/ConsultantWebsitePurchase')
+                cy.get('#AcceptTermsAndConditions')
+                    .click()
+                    .get('.button')
+                    .click()
+            }
+            command
+                .EnterCreditCardDetails()
         }
 
-        if (type === 'website-purchase') {
-            //Accept T&C's
-            cy.get('#AcceptTermsAndConditions')
-                .click()
-                .get('.button')
-                .click()
-        }
-        command
-            .EnterCreditCardDetails()
     });
 });
 

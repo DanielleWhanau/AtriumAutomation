@@ -5,7 +5,7 @@ describe('Tests advanced listing search functionality on the Listing Search page
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
         cy.loginSalesConsultant();
-        cy.visit('https://one-nz-stage.harcourts.net/Listings/Residential.aspx')
+        cy.visit(Environment.pages.dashboard+'Listings/Residential.aspx')
     });
 
     it('Tests Advanced listing search on the listing search page', () => {
