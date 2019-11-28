@@ -16,13 +16,13 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
         var sellerModal = '#divContactNewQuick > .modalBody'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         //Add a Seller via the 'Add New' button
-        cy.get('[id$=btnAddContact]', { timeout: 2000 })
-            .click()
+        cy.get('[id$=btnAddContact]', { timeout: 10000 })
+            .click( { force: true} )
             //Makes sure edit container is visible and selects....
             .get(sellerModal)
             .should('be.visible')
             //Enter Contact Firstname 
-            .get('[id$=txtFirstName]', { timeout: 2000 })
+            .get('[id$=txtFirstName]', { timeout: 10000 })
             .click()
             .type(firstName)
             //Enter Contact Lastname 

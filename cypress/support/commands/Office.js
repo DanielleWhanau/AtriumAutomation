@@ -97,7 +97,7 @@ Cypress.Commands.add('createOffice', (type) => {
                 .first()
                 .click()
                 //Type and select catchment area name    
-                .get('#s2id_ctl00_cph0_tcOU_tabCatchmentAreas_uclAjaxSearchLocation_hidSelectedID')
+                .get('[id$=tabCatchmentAreas_uclAjaxSearchLocation_hidSelectedID] > .select2-choice', { timeout: 5000 })
                 .click()
                 .get('#select2-drop > .select2-search')
                 .click()
@@ -128,7 +128,7 @@ Cypress.Commands.add('createOffice', (type) => {
                 .first()
                 .click()
                 //Type and select catchment area name    
-                .get('[id$=uclAjaxSearchLocation_hidSelectedID]')
+                .get('[id$=tabCatchmentAreas_uclAjaxSearchLocation_hidSelectedID] > .select2-choice', { timeout: 5000 })
                 .click()
                 .get('.select2-input')
                 .click()
@@ -181,9 +181,9 @@ Cypress.Commands.add('createOffice', (type) => {
                 .first()
                 .click()
                 //Type and select catchment area name    
-                .get('[id$=uclAjaxSearchLocation_hidSelectedID]')
+                .get('[id$=tabCatchmentAreas_uclAjaxSearchLocation_hidSelectedID] > .select2-choice', { timeout: 5000 })
                 .click()
-                .get('.select2-input')
+                .get('#select2-drop > .select2-search')
                 .click()
                 .find('input')
                 .first()
@@ -202,7 +202,7 @@ Cypress.Commands.add('createOffice', (type) => {
                 .first()
                 .click()
                 //Type and select catchment area name    
-                .get('[id$=uclAjaxSearchLocation_hidSelectedID]')
+                .get('[id$=tabCatchmentAreas_uclAjaxSearchLocation_hidSelectedID] > .select2-choice', { timeout: 5000 })
                 .click()
                 .get('.select2-input')
                 .click()

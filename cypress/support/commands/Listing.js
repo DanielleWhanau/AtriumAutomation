@@ -40,8 +40,8 @@ Cypress.Commands.add('addListing', (type) => {
                 .type(streetName)
                 .get("[id$=ajaxSearchLocation_hidSelectedID] > .select2-choice > .select2-arrow")
                 .click()
-                .get('[id$=autogen22_search]')
-                .click()
+                .get('#select2-drop > .select2-search', { timeout: 10000 })
+                .click({ force: true })
                 .type(suburb)
                 .get('.select2-searching')
                 .should('not.be.visible')
@@ -108,11 +108,24 @@ Cypress.Commands.add('addListing', (type) => {
                     .get('[id$=advMinimumPrice_0]')
                     .click()
                     .type('1500000')
+
+                if (isNZ() || isAU() || isZA()) {
+
                     //Selects Property Type sub tab
-                    .get(selectTab)
-                    .contains('Property Type')
-                    .click()
-                    .get('[id$=advPropertyType_7_0]')
+                    cy.get(selectTab)
+                        .contains('Property Type')
+                        .click()
+                }
+
+                if (isID()) {
+
+                    //Selects Property Type sub tab
+                    cy.get(selectTab)
+                        .contains('Property Details')
+                        .click()
+                }
+
+                cy.get('[id$=advPropertyType_7_0]')
                     .click()
                     //Sets Bedrooms
                     .get('[id$=advBedrooms_0]')
@@ -122,10 +135,13 @@ Cypress.Commands.add('addListing', (type) => {
                     .get('[id$=advBathrooms_0]')
                     .click()
                     .type('2')
+
+                if (isNZ() || isAU() || isZA()) {
                     //Sets Lounge Rooms
-                    .get('[id$=advLoungeRooms_0]')
-                    .click()
-                    .type('2')
+                    cy.get('[id$=advLoungeRooms_0]')
+                        .click()
+                        .type('2')
+                }
             }
 
             if (type === 'residential-rental') {
@@ -195,7 +211,7 @@ Cypress.Commands.add('addListing', (type) => {
                 .as('listing')
 
             command
-                .Publishing()
+                //.Publishing()
                 .SaveListing()
                 .ViewListing();
         }

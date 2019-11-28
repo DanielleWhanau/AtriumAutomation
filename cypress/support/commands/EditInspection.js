@@ -5,7 +5,8 @@ Cypress.Commands.add('editInspection', (type) => {
         const text = Faker.lorem.words();
         //Navigate to edit Inspections page and update text
         cy.get('[id$=tabInspection_tab]')
-            .click()
+            .contains('Inspections')
+            .click({ force: true })
             //Select Edit button on random inspection
             .get('[id$=repListingInspection_ctl00_uclListingInspectionEdit_lnkEdit]')
             .click()

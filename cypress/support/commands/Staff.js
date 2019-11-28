@@ -1,6 +1,7 @@
 import Faker from 'faker';
 import { OFFICENAME } from "../../fixtures/Constants";
 import { Environment } from "../Environment"
+import { isNZ, isAU, isID, isUS } from '../Environment';
 
 Cypress.Commands.add('newStaff', (type) => {
     return cy.then(() => {
@@ -61,12 +62,16 @@ Cypress.Commands.add('newStaff', (type) => {
             .get('[id$=uclContactInfoEdit_txtEmail]')
             .click()
             .type('h1.test.testers@harcourts.net')
-            //Confirm Email address
-            .get('[id$=uclContactInfoEdit_txtConfirmEmail]')
-            .click()
-            .type('h1.test.testers@harcourts.net')
-            //Selects System tab on edit page
-            .get(selectTab)
+
+        //NZ + AU have confirm email all others don't        
+        if (isNZ() || isAU()) {
+            cy.get('[id$=uclContactInfoEdit_txtConfirmEmail]')
+                .click()
+                .type('h1.test.testers@harcourts.net')
+        }
+
+        //Selects System tab on edit page
+        cy.get(selectTab)
             .contains('System')
             .click()
             .wrap({ firstName, lastName })
@@ -74,10 +79,13 @@ Cypress.Commands.add('newStaff', (type) => {
 
         if (type === 'sales-consultant') {
             //Selects Full edit listing permissions
-            command.get('span[securityroleid=18] > input')
-                .click()
-                //Selects Selling Consultant permissions
-                .get('span[securityroleid=29] > input')
+            if (isNZ() || isAU()) {
+                command.get('span[securityroleid=18] > input')
+                    .click()
+            }
+
+            //Selects Selling Consultant permissions
+            cy.get('span[securityroleid=29] > input')
                 .click()
         }
 
@@ -118,7 +126,7 @@ Cypress.Commands.add('newStaff', (type) => {
 
         command
             .saveStaffButton()
-            //.selectOK();
+        //.selectOK();
 
         return command;
     });

@@ -11,8 +11,6 @@ Cypress.Commands.add('keyWordSearch', (type) => {
             //Waits for page to load and spinner 'H' is gone
             .get('.spinner')
             .should('not.be.visible')
-            .get('[id$=uc1Consultants_lblTitle]')
-            .should('be.visible')
             //Logs it is done
             .log('KeyWord Search done')
     });

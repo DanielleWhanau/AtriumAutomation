@@ -1,4 +1,5 @@
 import { isNZ, isAU } from '../Environment';
+import Environment from "../../support/Environment";
 
 Cypress.Commands.add('purchaseProduct', (type) => {
     return cy.then(() => {

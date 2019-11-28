@@ -15,11 +15,11 @@ Cypress.Commands.add('createContact', (type) => {
             .click()
             //Enter Contact First name
             .get("[id$=txtFirstName]")
-            .click()
+            .click( { force: true } )
             .type(firstName)
             //Enter Contact Last name
             .get("[id$=txtLastName]")
-            .click()
+            .click({ force: true })
             .type(lastName)
             //Enter Contact Mobile number
             .get("[id$=txtMobileNumber]")

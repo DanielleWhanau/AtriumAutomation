@@ -1,15 +1,16 @@
 import Faker from 'faker';
-import { isNZ, isAU } from '../Environment';
+import { isNZ } from '../Environment';
 
 Cypress.Commands.add('editHazards', (type) => {
     return cy.then(() => {
-        if (isNZ() || isAU()) {
+        if (isNZ()) {
             const hazardName = Faker.lorem.word();
             const hazardRisk = Faker.lorem.word();
             const hazardControl = Faker.lorem.words();
             //Selects Hazards tab on a listing
             cy.get('[id$=tabHazards_tab]')
-                .click()
+                .contains('Hazards')
+                .click({ force: true })
                 //Select Edit button (on random hazard)
                 .get('[id$=repListingHazard_ctl00_uclListingHazardEdit_lnkEdit]')
                 .click()

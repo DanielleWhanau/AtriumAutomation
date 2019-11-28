@@ -7,12 +7,13 @@
     "manual": false,
     "RETRIES": 2,
     "environment": "STAGE",
-    "country": "ZA",
-    "office": "Harcourts Office Zooloo",
+    "country": "AU",
     "urls": {
-      "dashboard": "https://one-za-stage.harcourts.net/",
-      "residentialSalesListing":"https://one-za-stage.harcourts.net/Listings/View.aspx?id=343775",
-      "addSalesListing": "https://one-za-stage.harcourts.net/Listings/Edit01.aspx?t=residential"
+      "dashboard": "https://one-au-stage.harcourts.net/",
+      "residentialSalesListing":"https://one-au-stage.harcourts.net/Listings/View.aspx?id=807683", 
+      "residentialRentalListing": "https://one-au-stage.harcourts.net/Listings/View.aspx?id=807703",
+      "addSalesListing": "https://one-au-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
+      "addRentalListing": "https://one-au-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental"   
     },
     
     "loginSystemAdministrator": {
@@ -21,13 +22,13 @@
     },
 
     "loginSalesConsultant": {
-      "username": "s_tuser",
-      "password": "j38sd1"
+      "username": "s_aminihan",
+      "password": "i24dx"
     },
    
     "loginOfficeAdministrator": {
-      "username": "tyra",
-      "password": "moodley"
+      "username": "har",
+      "password": "har"
     }
   },
   "projectId": "so24xv"

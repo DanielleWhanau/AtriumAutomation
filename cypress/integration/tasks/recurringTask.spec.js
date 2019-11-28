@@ -5,7 +5,7 @@ describe('Create minimal weekly and monthly recurring Task', function () {
     beforeEach(() => {
         cy.visit(Environment.pages.dashboard);
         cy.loginSalesConsultant();
-        cy.visit('/Apps/Task.mvc/');       
+        cy.visit(Environment.pages.dashboard+'Apps/Task.mvc/');       
     });
 
     it('can create minimal weekly and monthly recurring task', () => {

@@ -3,13 +3,14 @@ import { isNZ, isAU } from '../Environment';
 
 Cypress.Commands.add('addHazards', (type) => {
     return cy.then(() => {
-        if (isNZ() || isAU()) {
+        if (isNZ()) {
             const hazardName = Faker.lorem.word();
             const hazardRisk = Faker.lorem.word();
             const hazardControl = Faker.lorem.words();
             //Adds an Internal Hazard to my listing
             cy.get('[id$=tabHazards_tab]')
-                .click()
+                .contains('Hazards')
+                .click({ force: true })
                 //Select Add New button on page
                 .get('[id$=uclListingHazardListEdit_hypAddNewHazard]')
                 .click()
