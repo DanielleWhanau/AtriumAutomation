@@ -67,8 +67,7 @@ Cypress.Commands.add('createOffice', (type) => {
 
         if (isNZ() || isAU()) {
             //Confirm email only necessary in NZ and AU
-            cy.type('test@test.com')
-                .get('[id$=txtConfirmEmail]')
+                cy.get('[id$=txtConfirmEmail]')
                 .click()
                 .type('test@test.com')
         }
@@ -130,7 +129,7 @@ Cypress.Commands.add('createOffice', (type) => {
                 //Type and select catchment area name    
                 .get('[id$=tabCatchmentAreas_uclAjaxSearchLocation_hidSelectedID] > .select2-choice', { timeout: 5000 })
                 .click()
-                .get('.select2-input')
+                .get('#select2-drop > .select2-search')
                 .click()
                 .find('input')
                 .first()

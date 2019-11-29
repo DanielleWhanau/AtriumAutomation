@@ -70,10 +70,10 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             .click()
             .type(suburb)
             //Ensure the Search text in 'progress' is not visible
-            .get('.select2-searching', { timeout: 2000 })
+            .get('.select2-searching', { timeout: 5000 })
             .should('not.be.visible')
-            .get(selectFromList, { timeout: 2000 })
-            .contains(suburb, { timeout: 2000 })
+            .get(selectFromList, { timeout: 5000 })
+            .contains(suburb, { timeout: 5000 })
             .click()
             //Makes sure the loading 'H' spinner is not visible
             .get('.spinner')
@@ -81,7 +81,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             //Select Appraisal Property type House, Unit, Apartment etc.
             .get('#s2id_ctl00_cph0_tcAppraisal_tabPropertyDetails_drpPropertyType > .select2-choice')
             .click()
-            .get(selectFromList, { timeout: 2000 })
+            .get(selectFromList, { timeout: 5000 })
             .contains('House')
             .click()
             //Set bedrooms

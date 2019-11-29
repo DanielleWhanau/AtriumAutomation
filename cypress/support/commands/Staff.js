@@ -1,7 +1,7 @@
 import Faker from 'faker';
 import { OFFICENAME } from "../../fixtures/Constants";
 import { Environment } from "../Environment"
-import { isNZ, isAU, isID, isUS } from '../Environment';
+import { isNZ, isAU } from '../Environment';
 
 Cypress.Commands.add('newStaff', (type) => {
     return cy.then(() => {

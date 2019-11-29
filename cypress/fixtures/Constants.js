@@ -46,11 +46,11 @@ export const AGENTNAME = {
 };
 
 export const OFFICENAME = {
-    NZ: 'Harcourts Greytown',
-    AU: 'Landmark Albany',
+    NZ: 'International',
+    AU: 'International',
     US: 'Harcourts',
     ID: 'Harcourts',
-    ZA: 'Harcourts Rhino'
+    ZA: 'Harcourts'
 };
 
 export const CONTACTEDITPAGE = {
