@@ -13,20 +13,24 @@ Cypress.Commands.add('createContact', (type) => {
             .get(".page-controls > ul > :nth-child(2) > a")
             .should('be.visible')
             .click()
-            //Enter Detail tab info
+            //Enter Contact First name
             .get("[id$=txtFirstName]")
-            .click()
+            .click( { force: true } )
             .type(firstName)
+            //Enter Contact Last name
             .get("[id$=txtLastName]")
-            .click()
+            .click({ force: true })
             .type(lastName)
+            //Enter Contact Mobile number
             .get("[id$=txtMobileNumber]")
             .click()
             .type(mobile)
+            //Enter Contact email
             .get("[id$=txtEmail]")
             .click()
             .type('test@test.com')
 
+        //NZ + AU have confirm email all others don't        
         if (isNZ() || isAU()) {
             cy.get("[id$=txtConfirmEmail]")
                 .click()

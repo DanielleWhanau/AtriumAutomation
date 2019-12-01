@@ -1,4 +1,7 @@
 import Faker from 'faker';
+import { OFFICENAME } from "../../fixtures/Constants";
+import { Environment } from "../Environment"
+import { isNZ, isAU } from '../Environment';
 
 Cypress.Commands.add('newStaff', (type) => {
     return cy.then(() => {
@@ -6,6 +9,7 @@ Cypress.Commands.add('newStaff', (type) => {
         const lastName = Faker.name.lastName();
         var selectFromList = 'li.select2-results-dept-0'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
+        var officeName = OFFICENAME[Environment.country]
         var command = cy
             .get('[id$=hypAddStaff]')
             .contains('Add New Staff')
@@ -37,10 +41,10 @@ Cypress.Commands.add('newStaff', (type) => {
             .get('#select2-drop > div:nth-child(1) > input')
             .click()
             //Finding and selecting specific office from drop down list...
-            .type('Harcourts Greytown')
+            .type(officeName)
             .get(selectFromList)
             .children()
-            .contains('Harcourts Greytown (Branch)')
+            .contains(officeName)
             .first()
             .click()
             //Confirming office selection..
@@ -58,12 +62,16 @@ Cypress.Commands.add('newStaff', (type) => {
             .get('[id$=uclContactInfoEdit_txtEmail]')
             .click()
             .type('h1.test.testers@harcourts.net')
-            //Confirm Email address
-            .get('[id$=uclContactInfoEdit_txtConfirmEmail]')
-            .click()
-            .type('h1.test.testers@harcourts.net')
-            //Selects System tab on edit page
-            .get(selectTab)
+
+        //NZ + AU have confirm email all others don't        
+        if (isNZ() || isAU()) {
+            cy.get('[id$=uclContactInfoEdit_txtConfirmEmail]')
+                .click()
+                .type('h1.test.testers@harcourts.net')
+        }
+
+        //Selects System tab on edit page
+        cy.get(selectTab)
             .contains('System')
             .click()
             .wrap({ firstName, lastName })
@@ -71,10 +79,13 @@ Cypress.Commands.add('newStaff', (type) => {
 
         if (type === 'sales-consultant') {
             //Selects Full edit listing permissions
-            command.get('span[securityroleid=18] > input')
-                .click()
-                //Selects Selling Consultant permissions
-                .get('span[securityroleid=29] > input')
+            if (isNZ() || isAU()) {
+                command.get('span[securityroleid=18] > input')
+                    .click()
+            }
+
+            //Selects Selling Consultant permissions
+            cy.get('span[securityroleid=29] > input')
                 .click()
         }
 
@@ -89,10 +100,10 @@ Cypress.Commands.add('newStaff', (type) => {
                 .get('#select2-drop > div:nth-child(1) > input')
                 .click()
                 //Finding and selecting specific office from drop down list...
-                .type('Harcourts Greytown')
+                .type(officeName)
                 .get(selectFromList)
                 .children()
-                .contains('Harcourts Greytown (Branch)')
+                .contains(officeName)
                 .first()
                 .click()
                 //Confirming office selection..
@@ -115,7 +126,7 @@ Cypress.Commands.add('newStaff', (type) => {
 
         command
             .saveStaffButton()
-            .selectOK();
+        //.selectOK();
 
         return command;
     });

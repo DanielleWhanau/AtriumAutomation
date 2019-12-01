@@ -9,7 +9,9 @@
     "environment": "STAGE",
     "country": "ID",
     "urls": {
-      "login": "https://one-id-stage.harcourts.net"
+      "dashboard": "https://one-id-stage.harcourts.net/",
+      "residentialSalesListing":"https://one-id-stage.harcourts.net/Listings/View.aspx?id=39282",
+      "addSalesListing": "https://one-id-stage.harcourts.net/Listings/Edit01.aspx?t=residential"
     },
     
     "loginSystemAdministrator": {
@@ -18,13 +20,13 @@
     },
 
     "loginSalesConsultant": {
-      "username": "",
-      "password": ""
+      "username": "s_tuser",
+      "password": "test"
     },
    
     "loginOfficeAdministrator": {
-      "username": "",
-      "password": ""
+      "username": "m_wchen",
+      "password": "seeyoulater"
     }
   },
   "projectId": "so24xv"

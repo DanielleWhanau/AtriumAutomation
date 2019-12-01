@@ -1,10 +1,14 @@
 import Faker from 'faker';
-import { isNZ, isAU, isZA, isID, isUS } from '../Environment';
+import { Environment } from "../Environment"
+import { COUNTRYNAME, STATENAME } from "../../fixtures/Constants";
+import { isNZ, isAU, isID, isUS, isZA } from '../Environment';
 
 Cypress.Commands.add('createFranchise', (type) => {
     return cy.then(() => {
         const name = Faker.name.firstName();
         var selectFromList = 'li.select2-results-dept-0'
+        var countryName = COUNTRYNAME[Environment.country]
+        var stateName = STATENAME[Environment.country]   
         var command = cy
             //Selects Cancel out of creating an office (top create a franchise)
             .get('[id$=tabDetails_btnCancel')
@@ -12,17 +16,29 @@ Cypress.Commands.add('createFranchise', (type) => {
             //Enter franchise name field
             .get('[id$=tabDetails_txtName]')
             .type('Harcourts Franchise ' + name)
+        if (isNZ() || isAU() || isID() || isUS()) {
             //Select State
-            .get('[id$=drpState] > .select2-choice')
+            cy.get('[id$=drpState] > .select2-choice')
+                .click()
+                .get(selectFromList)
+                .children()
+                .contains(countryName)
+                .click()
+        }
+        if (isZA()) {
+            //Select State
+            cy.get('[id$=drpState] > .select2-choice')
+                .click()
+                .get(selectFromList)
+                .children()
+                .contains(stateName)
+                .click()
+        }
+
+        //Enter opening date
+        cy.get('[id$=uclDateOpened_txtDate]')
             .click()
-            .get(selectFromList)
-            .children()
-            .contains('New Zealand')
-            .click()
-            //Enter opening date
-            .get('[id$=uclDateOpened_txtDate]')
-            .click()
-            .type('01/01/2018')
+            .type('01/01/2019')
             //Select Contact tab
             .get('[id$=tabContact_tab]')
             .click()

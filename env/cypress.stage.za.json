@@ -10,7 +10,9 @@
     "country": "ZA",
     "office": "Harcourts Office Zooloo",
     "urls": {
-      "login": "https://one-za-stage.harcourts.net"
+      "dashboard": "https://one-za-stage.harcourts.net/",
+      "residentialSalesListing":"https://one-za-stage.harcourts.net/Listings/View.aspx?id=343775",
+      "addSalesListing": "https://one-za-stage.harcourts.net/Listings/Edit01.aspx?t=residential"
     },
     
     "loginSystemAdministrator": {
@@ -19,13 +21,13 @@
     },
 
     "loginSalesConsultant": {
-      "username": "",
-      "password": ""
+      "username": "s_tuser",
+      "password": "j38sd1"
     },
    
     "loginOfficeAdministrator": {
-      "username": "",
-      "password": ""
+      "username": "tyra",
+      "password": "moodley"
     }
   },
   "projectId": "so24xv"

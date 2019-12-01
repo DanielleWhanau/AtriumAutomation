@@ -8,6 +8,8 @@ export const Environment = {
         dashboard: Cypress.env('urls').dashboard,
         residentialSalesListing: Cypress.env('urls').residentialSalesListing,
         residentialRentalListing: Cypress.env('urls').residentialRentalListing,
+        addSalesListing: Cypress.env('urls').addSalesListing,
+        addRentalListing: Cypress.env('urls').addRentalListing
     },
     loginSystemAdministrator: {
         username: Cypress.env('loginSystemAdministrator').username,

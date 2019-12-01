@@ -9,7 +9,8 @@
     "environment": "STAGE",
     "country": "US",
     "urls": {
-      "login": "https://one-us-stage.harcourts.net"
+      "dashboard": "https://one-us-stage.harcourts.net/",
+      "residentialSalesListing":"https://one-us-stage.harcourts.net/Listings/View.aspx?id=5505112"
     },
     
     "loginSystemAdministrator": {
@@ -18,13 +19,13 @@
     },
 
     "loginSalesConsultant": {
-      "username": "",
-      "password": ""
+      "username": "m_ngriffin",
+      "password": "w13jm"
     },
    
     "loginOfficeAdministrator": {
-      "username": "",
-      "password": ""
+      "username": "mkuser",
+      "password": "ios"
     }
   },
   "projectId": "so24xv"
