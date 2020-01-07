@@ -9,7 +9,7 @@
     "environment": "STAGE",
     "country": "AU",
     "urls": {
-      "dashboard": "https://one-nz-stage.harcourts.net/",
+      "dashboard": "https://one-au-stage.harcourts.net/",
       "residentialSalesListing":"https://one-au-stage.harcourts.net/Listings/View.aspx?id=807683", 
       "residentialRentalListing": "https://one-au-stage.harcourts.net/Listings/View.aspx?id=807703",
       "addSalesListing": "https://one-au-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
