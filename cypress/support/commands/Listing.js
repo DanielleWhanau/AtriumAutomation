@@ -18,9 +18,8 @@ Cypress.Commands.add('addListing', (type) => {
             var selectFromList = 'li.select2-results-dept-0'
             var sellerModal = '#divContactNewQuick > .modalBody'
             var selectTab = '.ajax__tab_header span.ajax__tab_tab'
-            var command = cy
-                //Selects Listing Consultant
-                .get('[id$=ajaxSearchStaff_hidSelectedID] > .select2-choice > .select2-arrow')
+            //Selects Listing Consultant
+            cy.get('[id$=ajaxSearchStaff_hidSelectedID] > .select2-choice > .select2-arrow')
                 .click()
                 .get('[id$=select2-drop] > .select2-search > input')
                 .click()
@@ -206,49 +205,8 @@ Cypress.Commands.add('addListing', (type) => {
                     .click()
                     .type('2')
             }
-
-            command.wrap({ futureDate })
-                .as('listing')
-
-            command
-                //.Publishing()
-                .SaveListing()
+            cy.SaveButton()
                 .ViewListing();
         }
     });
-});
-
-Cypress.Commands.add('Publishing', () => {
-    var randomText = 'Check out this super cool property weeow!'
-    //Selects Publishing tab
-    cy.get('[id$=tc_tab04]')
-        .contains('Publishing')
-        .click()
-        .get('.spinner')
-        .should('not.be.visible')
-        //Selects and enters listing header
-        .get('[id$=advInternetHeading_0]', { timeout: 20000 })
-        .should('be.visible')
-        .click()
-        .type('This home is GUCCI!')
-        //Selects and enters listing body
-        .get('[id$=dvInternetBody_0]')
-        .click()
-        .type(randomText)
-});
-
-Cypress.Commands.add('SaveListing', () => {
-    //Selects save button
-    cy.get('[id$=uclEditSave_btnSave]')
-        .contains('Save Now')
-        .click()
-        .get('.spinner')
-        .should('not.be.visible')
-});
-
-Cypress.Commands.add('ViewListing', () => {
-    //Selects View listing button
-    cy.get('[id$=hypViewListingPageControl]')
-        .contains('View listing')
-        .click()
 });

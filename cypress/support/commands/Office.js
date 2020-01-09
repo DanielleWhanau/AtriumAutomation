@@ -10,9 +10,8 @@ Cypress.Commands.add('createOffice', (type) => {
         var selectFromList = 'li.select2-results-dept-0'
         var countryName = COUNTRYNAME[Environment.country]
         var stateName = STATENAME[Environment.country]
-        var command = cy
-            //Selects which Franchise the office belongs to
-            .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
+        //Selects which Franchise the office belongs to
+        cy.get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
             .click()
             .get('#s2id_autogen7_search')
             .click()
@@ -67,7 +66,7 @@ Cypress.Commands.add('createOffice', (type) => {
 
         if (isNZ() || isAU()) {
             //Confirm email only necessary in NZ and AU
-                cy.get('[id$=txtConfirmEmail]')
+            cy.get('[id$=txtConfirmEmail]')
                 .click()
                 .type('test@test.com')
         }
@@ -84,13 +83,11 @@ Cypress.Commands.add('createOffice', (type) => {
             //Set Default Suburb
             .get('#s2id_ctl00_cph0_tcOU_tabCatchmentAreas_uclAjaxSearchLocationSuburb_hidSelectedID')
             .click()
-            .get('#select2-drop > .select2-search')
-            .click()
 
         if (isNZ()) {
             //Type and select suburb name
-            command.find('input')
-                .first()
+            cy.get('#select2-drop > .select2-search')
+                .click()
                 .type('Halswell')
                 .get(selectFromList)
                 .first()
@@ -120,8 +117,8 @@ Cypress.Commands.add('createOffice', (type) => {
 
         if (isAU()) {
             //Type and select suburb name
-            command.find('input')
-                .first()
+            cy.get('#select2-drop > .select2-search')
+                .click()
                 .type('Jimboomba')
                 .get(selectFromList)
                 .first()
@@ -151,8 +148,8 @@ Cypress.Commands.add('createOffice', (type) => {
 
         if (isZA()) {
             //Type and select suburb name
-            command.find('input')
-                .first()
+            cy.get('#select2-drop > .select2-search')
+                .click()
                 .type('Johannesburg')
                 .get(selectFromList)
                 .first()
@@ -173,8 +170,8 @@ Cypress.Commands.add('createOffice', (type) => {
 
         if (isID()) {
             //Type and select suburb name
-            command.find('input')
-                .first()
+            cy.get('#select2-drop > .select2-search')
+                .click()
                 .type('Balige')
                 .get(selectFromList)
                 .first()
@@ -194,8 +191,8 @@ Cypress.Commands.add('createOffice', (type) => {
 
         if (isUS()) {
             //Type and select suburb name
-            command.find('input')
-                .first()
+            cy.get('#select2-drop > .select2-search')
+                .click()
                 .type('Acton')
                 .get(selectFromList)
                 .first()
@@ -212,19 +209,7 @@ Cypress.Commands.add('createOffice', (type) => {
                 .first()
                 .click()
         }
-
-        command.wrap({ name, code })
-            .as('office')
-
-        command
-            .saveButton()
-
-        return command;
-    });
-});
-
-Cypress.Commands.add('saveButton', () => {
-    cy.get('[id$=uclEditSave_btnSave]')
-        .contains('Save Now')
-        .click()
+        
+        cy.SaveButton();
+    })
 });

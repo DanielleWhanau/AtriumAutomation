@@ -5,17 +5,16 @@ Cypress.Commands.add('createContact', (type) => {
     return cy.then(() => {
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
-        const mobile = Faker.phone.phoneNumber();
-        var command = cy
-            //Navigate to add contact page
-            .get('[id$=miContacts]')
+        const mobile = Faker.phone.phoneNumberFormat(0);
+        //Navigate to add contact page
+        cy.get('[id$=miContacts]')
             .click()
             .get(".page-controls > ul > :nth-child(2) > a")
             .should('be.visible')
             .click()
             //Enter Contact First name
             .get("[id$=txtFirstName]")
-            .click( { force: true } )
+            .click({ force: true })
             .type(firstName)
             //Enter Contact Last name
             .get("[id$=txtLastName]")
@@ -37,21 +36,9 @@ Cypress.Commands.add('createContact', (type) => {
                 .type('test@test.com')
         }
 
-        command
-            .saveButton()
+        cy.SaveButton()
             .get('[id$=cph0_lnkView]')
             .should('be.visible')
             .click()
-
-        command.wrap({ firstName, lastName })
-            .as('createContact')
-
-        return command;
     });
-});
-
-Cypress.Commands.add('saveButton', () => {
-    cy.get('[id$=uclEditSave_btnSave]')
-        .contains('Save Now')
-        .click()
 });

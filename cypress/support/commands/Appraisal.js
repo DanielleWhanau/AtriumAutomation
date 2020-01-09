@@ -1,5 +1,5 @@
 import Faker from 'faker';
-import { SUBURB, COUNTRYNAME } from "../../fixtures/Constants";
+import { SUBURB } from "../../fixtures/Constants";
 import { Environment } from "../Environment"
 import { isNZ, isAU, isZA, isUS } from '../Environment';
 
@@ -12,7 +12,6 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
         const futureDate = Faker.date.future(0.08).toLocaleDateString("ca-ES");
         const futureUSDate = Faker.date.future(0.08).toLocaleDateString("en-US");
         var suburb = SUBURB[Environment.country]
-        var countryName = COUNTRYNAME[Environment.country]
         var selectFromList = 'li.select2-results-dept-0'
         var sellerModal = '#divContactNewQuick > .modalBody'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
@@ -149,11 +148,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             .get('.spinner', { timeout: 30000 })
             .should('not.be.visible')
             //Save Appraisal
-            .get('[id$=uclEditSave_btnSave]')
-            .click()
-            .get('.spinner')
-            .should('not.be.visible')
-            //Logs it is done
-            .log('Appraisal added')
+            cy.SaveButton();
+            cy.log('Completed')
     });
 });

@@ -11,8 +11,7 @@ Cypress.Commands.add('newStaff', (type) => {
         var selectFromList = 'li.select2-results-dept-0'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         var officeName = OFFICENAME[Environment.country]
-        var command = cy
-            .get('.modal-body [id$=txtFirstName]')
+        cy.get('.modal-body [id$=txtFirstName]')
             //Faker creates Random first name  
             .type(firstName)
             .get('.modal-body [id$=txtLastName]')
@@ -78,7 +77,7 @@ Cypress.Commands.add('newStaff', (type) => {
         if (type === 'sales-consultant') {
             //Selects Full edit listing permissions
             if (isNZ() || isAU()) {
-                command.get('span[securityroleid=18] > input')
+                cy.get('span[securityroleid=18] > input')
                     .click()
             }
 
@@ -89,7 +88,7 @@ Cypress.Commands.add('newStaff', (type) => {
 
         if (type === 'office-administrator') {
             //Selecting office the Office Adminsitrator "Manages"
-            command.get('[id$=btnChangeManagedOU]')
+            cy.get('[id$=btnChangeManagedOU]')
                 .click()
                 .get('#ctl00_cph0_divHeading')
                 .should("be.visible")
@@ -119,26 +118,7 @@ Cypress.Commands.add('newStaff', (type) => {
                 .click({ force: true })
         }
 
-        command.wrap({ firstName, lastName })
-            .as('user')
+        cy.SaveButton();
 
-        command
-            .saveStaffButton()
-        //.selectOK();
-
-        return command;
     });
-});
-
-Cypress.Commands.add('saveStaffButton', () => {
-    cy.get('[id$=uclEditSave_btnSave]')
-        .contains('Save Now')
-        .click()
-});
-
-Cypress.Commands.add('selectOK', () => {
-    cy.get('[id$=divCredentialHeading]', { timeout: 20000 }).should('be.visible')
-        .get('[id$=cph0_btnOk]', { timeout: 20000 })
-        .contains('Ok')
-        .click()
 });

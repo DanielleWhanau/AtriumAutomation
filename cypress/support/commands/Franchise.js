@@ -48,19 +48,6 @@ Cypress.Commands.add('createFranchise', (type) => {
             .get('[id$=txtHomeNumber]')
             .click()
             .type('022 2222222')
-
-        command.wrap({ name })
-            .as('franchise')
-
-        command
-            .saveButton()
-
-        return command;
+            .SaveButton()
     });
-});
-
-Cypress.Commands.add('saveButton', () => {
-    cy.get('[id$=uclEditSave_btnSave]')
-        .contains('Save Now')
-        .click()
 });

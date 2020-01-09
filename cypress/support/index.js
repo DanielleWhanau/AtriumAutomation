@@ -46,3 +46,4 @@ import '../support/commands/GlobalSearch';
 import '../support/commands/CCGProducts';
 import '../support/commands/ContactTrails';
 import '../support/commands/O&PSites';
+import '../support/commands/CommandCodes';

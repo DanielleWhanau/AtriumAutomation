@@ -38,11 +38,7 @@ Cypress.Commands.add('addStandaloneCMA', (type) => {
             .get('.spinner')
             .should('not.be.visible')
             //Save CMA
-            .get('[id$=uclEditSave_btnSave]')
-            .click()
-            .get('.spinner')
-            .should('not.be.visible')
-            //Logs it is done
-            .log('CMA done')
+            cy.SaveButton();
+            cy.log('Completed')
     });
 });
