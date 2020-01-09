@@ -23,8 +23,9 @@ Cypress.Commands.add('newStaff', (type) => {
             .get('#ctl00_cph0_uclDynamicStaffFind_StaffFind_divFooter > .button', { timeout: 20000 })
             .contains('Create New')
             .click()
+            .wait(10000)
             //Enter Dob
-            .get('[id$=uclDateOfBirth_txtDate]')
+            .get('[id$=uclDateOfBirth_txtDate]', { timeout: 5000 })
             .click()
             //Faker creates a random date within the last 20 years
             .type(date)
@@ -71,8 +72,7 @@ Cypress.Commands.add('newStaff', (type) => {
         cy.get(selectTab)
             .contains('System')
             .click()
-            .wrap({ firstName, lastName })
-            .as('user')
+
 
         if (type === 'sales-consultant') {
             //Selects Full edit listing permissions

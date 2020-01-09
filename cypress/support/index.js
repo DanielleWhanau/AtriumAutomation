@@ -47,3 +47,9 @@ import '../support/commands/CCGProducts';
 import '../support/commands/ContactTrails';
 import '../support/commands/O&PSites';
 import '../support/commands/CommandCodes';
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+})
