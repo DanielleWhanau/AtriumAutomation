@@ -1,4 +1,4 @@
-import { COUNTRIES, ENVIRONMENTS} from "../fixtures/Constants";
+import { COUNTRIES, ENVIRONMENTS } from "../fixtures/Constants";
 
 export const Environment = {
     environment: Cypress.env('environment'),
@@ -9,8 +9,10 @@ export const Environment = {
         residentialSalesListing: Cypress.env('urls').residentialSalesListing,
         residentialRentalListing: Cypress.env('urls').residentialRentalListing,
         addSalesListing: Cypress.env('urls').addSalesListing,
-        addRentalListing: Cypress.env('urls').addRentalListing
+        addRentalListing: Cypress.env('urls').addRentalListing,
+        addStaffUrl: Cypress.env('urls').addStaffUrl
     },
+
     loginSystemAdministrator: {
         username: Cypress.env('loginSystemAdministrator').username,
         password: Cypress.env('loginSystemAdministrator').password,

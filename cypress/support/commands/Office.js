@@ -33,7 +33,7 @@ Cypress.Commands.add('createOffice', (type) => {
             .click()
             .type(code)
 
-        if (isNZ() || isAU() || isID() || isUS()) {
+        if (isNZ() || isAU() || isID()) {
             //Select State
             cy.get('[id$=drpState] > .select2-choice')
                 .click()

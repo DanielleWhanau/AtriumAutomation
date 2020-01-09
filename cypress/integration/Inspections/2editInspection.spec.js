@@ -1,4 +1,4 @@
-import Environment from "../../support/Environment";
+import Environment, { isNZ, isAU, isZA, isID } from "../../support/Environment";
 
 describe('Edits Inspection on a listing', function () {
 
@@ -9,6 +9,8 @@ describe('Edits Inspection on a listing', function () {
     });
 
     it('Edits Inspection on a listing', () => {
-        cy.editInspection();
+        if (isNZ() || isAU() || isZA() || isID()) {
+            cy.editInspection();
+        }
     })
 });

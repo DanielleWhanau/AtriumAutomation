@@ -1,10 +1,10 @@
-import { CONTACTNAME, DIRECTORYWORD } from "../../fixtures/Constants";
+import { CONTACTNAME, DIRECTORYWORD, LISTINGSEARCHTEXT } from "../../fixtures/Constants";
 import { Environment } from "../Environment"
 import { isNZ, isAU } from '../Environment';
 
 Cypress.Commands.add('globalSearch', (type) => {
     return cy.then(() => {
-        var listing = 'HIL'
+        var listingSearch = LISTINGSEARCHTEXT[Environment.country]
         var contactName = CONTACTNAME[Environment.country]
         var directoryWord = DIRECTORYWORD[Environment.country]
         var product = 'Email Address'
@@ -22,7 +22,7 @@ Cypress.Commands.add('globalSearch', (type) => {
             //Select Listing input
             .get('#select2-drop > div:nth-child(1) > input')
             .click()
-            .type(listing)
+            .type(listingSearch)
             .get(selectFromList)
             .first()
             .click({ force: true })

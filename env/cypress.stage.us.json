@@ -10,7 +10,8 @@
     "country": "US",
     "urls": {
       "dashboard": "https://one-us-stage.harcourts.net/",
-      "residentialSalesListing":"https://one-us-stage.harcourts.net/Listings/View.aspx?id=5505112"
+      "residentialSalesListing":"https://one-us-stage.harcourts.net/Listings/View.aspx?id=5505112",
+      "addStaffUrl": "https://one-us-stage.harcourts.net/Directory/StaffEdit.aspx"
     },
     
     "loginSystemAdministrator": {

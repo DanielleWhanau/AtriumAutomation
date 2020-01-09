@@ -11,7 +11,8 @@
     "urls": {
       "dashboard": "https://one-id-stage.harcourts.net/",
       "residentialSalesListing":"https://one-id-stage.harcourts.net/Listings/View.aspx?id=39282",
-      "addSalesListing": "https://one-id-stage.harcourts.net/Listings/Edit01.aspx?t=residential"
+      "addSalesListing": "https://one-id-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
+      "addStaffUrl": "https://one-id-stage.harcourts.net/Directory/StaffEdit.aspx" 
     },
     
     "loginSystemAdministrator": {

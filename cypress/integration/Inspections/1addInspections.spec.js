@@ -1,4 +1,4 @@
-import Environment from "../../support/Environment";
+import Environment, { isNZ, isAU, isZA, isID } from "../../support/Environment";
 
 describe('Adds Inspections to a listing', function () {
 
@@ -9,6 +9,8 @@ describe('Adds Inspections to a listing', function () {
     });
 
     it('Adds Inspections to a listing', () => {
-        cy.addInspections();
+        if (isNZ() || isAU() || isZA() || isID()) {
+            cy.addInspections();
+        }
     })
 });

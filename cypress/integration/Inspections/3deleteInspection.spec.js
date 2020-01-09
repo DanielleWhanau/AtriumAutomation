@@ -1,4 +1,4 @@
-import Environment from "../../support/Environment";
+import Environment, { isNZ, isAU, isZA, isID } from "../../support/Environment";
 
 describe('Deletes Inspection on a listing', function () {
 
@@ -9,6 +9,8 @@ describe('Deletes Inspection on a listing', function () {
     });
 
     it('Deletes Inspection on a listing', () => {
-        cy.deleteInspection();
+        if (isNZ() || isAU() || isZA() || isID()) {
+            cy.deleteInspection();
+        }
     })
 });

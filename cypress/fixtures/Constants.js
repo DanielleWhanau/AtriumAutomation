@@ -76,3 +76,11 @@ export const DIRECTORYWORD = {
     ID: 'Danielle Whanau',
     ZA: 'Danielle Whanau'
 };
+
+export const LISTINGSEARCHTEXT = {
+    NZ: 'har',
+    AU: 'har',
+    US: '400',
+    ID: 'har',
+    ZA: 'har'
+};

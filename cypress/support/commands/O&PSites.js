@@ -1,18 +1,28 @@
 import Faker from 'faker';
 import { OFFICENAME } from "../../fixtures/Constants"
-import { Environment } from "../Environment"
+import { Environment, isAU, isNZ, isZA, isID, isUS } from "../Environment"
 
 Cypress.Commands.add('officeWebsite', (type) => {
     return cy.then(() => {
         const websiteName = Faker.name.firstName();
         var officeName = OFFICENAME[Environment.country]
         var selectFromList = "li.select2-results-dept-0"
+        if (isUS()) {
+            cy.visit(Environment.pages.dashboard);
+        }
         NavigateToWebPageManagement();
         CreatePrimaryWebsiteUrl(websiteName);
         //assign office to feature in this website
-        cy.get('#select2-chosen-17')
-            .click()
-            .get('#select2-drop > .select2-search')
+        if (isID()) {
+            cy.get('#select2-chosen-16')
+                .click()
+        }
+
+        if (isNZ() || isAU() || isZA()) {
+            cy.get('#select2-chosen-17')
+                .click()
+        }
+        cy.get('#select2-drop > .select2-search')
             .click()
             .type(officeName)
             .get(selectFromList)

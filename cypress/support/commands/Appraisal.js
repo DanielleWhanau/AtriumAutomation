@@ -1,7 +1,7 @@
 import Faker from 'faker';
 import { SUBURB, COUNTRYNAME } from "../../fixtures/Constants";
 import { Environment } from "../Environment"
-import { isNZ, isAU, isZA } from '../Environment';
+import { isNZ, isAU, isZA, isUS } from '../Environment';
 
 Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
     return cy.then(() => {
@@ -10,6 +10,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
         const futureDate = Faker.date.future(0.08).toLocaleDateString("ca-ES");
+        const futureUSDate = Faker.date.future(0.08).toLocaleDateString("en-US");
         var suburb = SUBURB[Environment.country]
         var countryName = COUNTRYNAME[Environment.country]
         var selectFromList = 'li.select2-results-dept-0'
@@ -17,7 +18,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         //Add a Seller via the 'Add New' button
         cy.get('[id$=btnAddContact]', { timeout: 10000 })
-            .click( { force: true} )
+            .click({ force: true })
             //Makes sure edit container is visible and selects....
             .get(sellerModal)
             .should('be.visible')
@@ -100,7 +101,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             .get(".listing-edit-map", { timeout: 30000 })
             .should("be.visible")
             .get('#geocodeResults > a')
-            .contains(countryName)
+            .contains(suburb)
             .click()
             //Selects Tasks tab
             .get(selectTab)
@@ -115,12 +116,22 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             .get('[id$=uclTaskEdit_txtDescription]')
             .click()
             .type('Testing Tasks')
+
+        if (isAU() || isNZ() || isZA()) {
             //Task date
-            .get('[id$=uclTaskEdit_uclDueDateTime_txtDate]')
-            .click()
-            .type(futureDate)
-            //Task time
-            .get('[id$=uclTaskEdit_uclDueTime_txtTimeDisplay]')
+            cy.get('[id$=uclTaskEdit_uclDueDateTime_txtDate]')
+                .click()
+                .type(futureDate)
+        }
+        if (isUS()) {
+            //Task date
+            cy.get('[id$=uclTaskEdit_uclDueDateTime_txtDate]')
+                .click()
+                .type(futureUSDate)
+            }
+
+        //Task time
+        cy.get('[id$=uclTaskEdit_uclDueTime_txtTimeDisplay]')
             .click()
             .type('10.00')
             //Select save task button

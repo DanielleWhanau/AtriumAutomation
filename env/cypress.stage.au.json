@@ -13,7 +13,8 @@
       "residentialSalesListing":"https://one-au-stage.harcourts.net/Listings/View.aspx?id=807683", 
       "residentialRentalListing": "https://one-au-stage.harcourts.net/Listings/View.aspx?id=807703",
       "addSalesListing": "https://one-au-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
-      "addRentalListing": "https://one-au-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental"   
+      "addRentalListing": "https://one-au-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental",
+      "addStaffUrl": "https://one-au-stage.harcourts.net/Directory/StaffEdit.aspx"     
     },
     
     "loginSystemAdministrator": {

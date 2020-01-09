@@ -7,13 +7,11 @@ Cypress.Commands.add('newStaff', (type) => {
     return cy.then(() => {
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
+        const date = Faker.date.past(20).toLocaleDateString('ca-ES')
         var selectFromList = 'li.select2-results-dept-0'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         var officeName = OFFICENAME[Environment.country]
         var command = cy
-            .get('[id$=hypAddStaff]')
-            .contains('Add New Staff')
-            .click()
             .get('.modal-body [id$=txtFirstName]')
             //Faker creates Random first name  
             .type(firstName)
@@ -23,14 +21,14 @@ Cypress.Commands.add('newStaff', (type) => {
             .get('[id$=btnNext]')
             .click()
             //Selects Create New Staff button
-            .get('[id$=StaffFind_divFooter] > .button', { timout: 20000 })
+            .get('#ctl00_cph0_uclDynamicStaffFind_StaffFind_divFooter > .button', { timeout: 20000 })
             .contains('Create New')
             .click()
             //Enter Dob
             .get('[id$=uclDateOfBirth_txtDate]')
             .click()
             //Faker creates a random date within the last 20 years
-            .type(Faker.date.past(20).toLocaleDateString('ca-ES'))
+            .type(date)
             //Selects Sales Consutant office
             .get('[id$=tabDetails_btnChangeOU]')
             .click()

@@ -12,7 +12,8 @@
     "urls": {
       "dashboard": "https://one-za-stage.harcourts.net/",
       "residentialSalesListing":"https://one-za-stage.harcourts.net/Listings/View.aspx?id=343775",
-      "addSalesListing": "https://one-za-stage.harcourts.net/Listings/Edit01.aspx?t=residential"
+      "addSalesListing": "https://one-za-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
+      "addStaffUrl": "https://one-za-stage.harcourts.net/Directory/StaffEdit.aspx"
     },
     
     "loginSystemAdministrator": {

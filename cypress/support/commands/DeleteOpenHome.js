@@ -4,7 +4,7 @@ Cypress.Commands.add('deleteOpenHome', (type) => {
         cy.get('[id$=tabOpenHomes_tab]')
             .click()
             //Select Delete icon
-            .get('[id$=repListingOpenHomes_ctl02_uclListingOpenHomeEdit_divDelete]')
+            .get('[id$=repListingOpenHomes_ctl00_uclListingOpenHomeEdit_divDelete]')
             .click()
     })
 });
