@@ -1,7 +1,6 @@
 import Faker from 'faker';
-import { isAU, isZA, isUS, isNZ, isID } from "../Environment";
+import { Environment, isAU, isZA, isUS, isNZ, isID } from "../Environment";
 import { COUNTRYNAME, STATENAME } from "../../fixtures/Constants";
-import { Environment } from "../Environment"
 
 Cypress.Commands.add('createOffice', (type) => {
     return cy.then(() => {

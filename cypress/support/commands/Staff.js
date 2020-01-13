@@ -1,53 +1,60 @@
 import Faker from 'faker';
 import { OFFICENAME } from "../../fixtures/Constants";
-import { Environment } from "../Environment"
-import { isNZ, isAU } from '../Environment';
+import { Environment, isNZ, isAU } from '../Environment';
 
 Cypress.Commands.add('newStaff', (type) => {
     return cy.then(() => {
         const firstName = Faker.name.firstName();
         const lastName = Faker.name.lastName();
+        const loginDetails = Faker.internet.userName();
         const date = Faker.date.past(20).toLocaleDateString('ca-ES')
         var selectFromList = 'li.select2-results-dept-0'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         var officeName = OFFICENAME[Environment.country]
-        cy.get('.modal-body [id$=txtFirstName]')
+
+        cy.window().then(window => {
+            Cypress.$("#ctl00_cph0_uclDynamicStaffFind_StaffFind_pnlStaffFind").remove();
+            Cypress.$("#ctl00_cph0_uclDynamicStaffFind_StaffFind_mpeStaffEmploymentHistoryEditModal_backgroundElement").remove();
+            Cypress.$("[data-overlay-id]").remove();
+            Cypress.$("body").removeClass("modal-open");
+            Cypress.$("#ctl00_cph0_tabContainerMain_tpnlSystem_tabContainerSystemInner_tpnlSystemInnerSecurity_txtUsername").removeAttr("disabled");
+        })
+
+        cy.window().then(window => {
+            window.onerror = (e) => {
+                console.log(e);
+            };
+        })
+        cy.get('[id$=txtFirstName]')
             //Faker creates Random first name  
             .type(firstName)
-            .get('.modal-body [id$=txtLastName]')
+            .get('[id$=txtSurname]')
             //Faker creates Random first name  
             .type(lastName)
-            .get('[id$=btnNext]')
-            .click()
-            //Selects Create New Staff button
-            .get('#ctl00_cph0_uclDynamicStaffFind_StaffFind_divFooter > .button', { timeout: 20000 })
-            .contains('Create New')
-            .click()
-            .wait(10000)
             //Enter Dob
-            .get('[id$=uclDateOfBirth_txtDate]', { timeout: 5000 })
+            .get('[id$=uclDateOfBirth_txtDate]')
             .click()
             //Faker creates a random date within the last 20 years
             .type(date)
-            //Selects Sales Consutant office
-            .get('[id$=tabDetails_btnChangeOU]')
-            .click()
-            .get('#ctl00_cph0_divHeading')
-            .should("be.visible")
-            .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
-            .click()
-            .get('#select2-drop > div:nth-child(1) > input')
-            .click()
-            //Finding and selecting specific office from drop down list...
-            .type(officeName)
-            .get(selectFromList)
-            .children()
-            .contains(officeName)
-            .first()
-            .click()
-            //Confirming office selection..
-            .get('[id$=cph0_btnSelect]', { timeout: 20000 })
-            .click()
+            // //Selects Sales Consutant office
+            // .get('[id$=tabDetails_btnChangeOU]')
+            // .click()
+            // .get('#ctl00_cph0_divHeading')
+            // .should("be.visible")
+            // .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
+            // .click()
+            // .get('#select2-drop > div:nth-child(1) > input')
+            // .click()
+            // //Finding and selecting specific office from drop down list...
+            // .type(officeName)
+            // .get(selectFromList)
+            // .children()
+            // .contains(officeName)
+            // .first()
+            // .click()
+            // //Confirming office selection..
+            // .get('[id$=cph0_btnSelect]', { timeout: 20000 })
+            // .click()
             //Selects Contact tab on edit page
             .get(selectTab)
             .contains('Contact')
@@ -88,7 +95,8 @@ Cypress.Commands.add('newStaff', (type) => {
 
         if (type === 'office-administrator') {
             //Selecting office the Office Adminsitrator "Manages"
-            cy.get('[id$=btnChangeManagedOU]')
+            cy.pause()
+                .get('[id$=btnChangeManagedOU]')
                 .click()
                 .get('#ctl00_cph0_divHeading')
                 .should("be.visible")
@@ -118,7 +126,12 @@ Cypress.Commands.add('newStaff', (type) => {
                 .click({ force: true })
         }
 
+        cy.get('[id$=tpnlSystemInnerSecurity_txtUsername]')
+            .click()
+            .type(loginDetails)
+            .get('[id$=tpnlSystemInnerSecurity_txtPassword]')
+            .click()
+            .type(loginDetails)
         cy.SaveButton();
-
     });
 });
