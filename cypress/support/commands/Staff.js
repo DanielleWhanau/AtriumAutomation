@@ -95,8 +95,7 @@ Cypress.Commands.add('newStaff', (type) => {
 
         if (type === 'office-administrator') {
             //Selecting office the Office Adminsitrator "Manages"
-            cy.pause()
-                .get('[id$=btnChangeManagedOU]')
+                cy.get('[id$=btnChangeManagedOU]')
                 .click()
                 .get('#ctl00_cph0_divHeading')
                 .should("be.visible")
