@@ -2,36 +2,34 @@
   "viewportWidth": 1366,
   "viewportHeight": 768,
   "chromeWebSecurity": false,
-  "defaultCommandTimeout": 60000,
-  "numTestsKeptInMemory": 4,
-  "baseUrl": "https://one-nz-stage.harcourts.net",
+  "defaultCommandTimeout": 10000,
   "env": {
     "manual": false,
     "RETRIES": 2,
     "environment": "STAGE",
-    "country": "NZ",
+    "country": "AU",
     "urls": {
-      "dashboard": "https://one-nz-stage.harcourts.net/",
-      "residentialSalesListing":"https://one-nz-stage.harcourts.net/Listings/View.aspx?id=894940", 
-      "residentialRentalListing": "https://one-nz-stage.harcourts.net/Listings/View.aspx?id=894945",
-      "addSalesListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
-      "addRentalListing": "https://one-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental",  
-      "addStaffUrl": "https://one-nz-stage.harcourts.net/Directory/StaffEdit.aspx"  
+      "dashboard": "https://one-au-stage.harcourts.net/",
+      "residentialSalesListing":"https://one-au-stage.harcourts.net/Listings/View.aspx?id=807683", 
+      "residentialRentalListing": "https://one-au-stage.harcourts.net/Listings/View.aspx?id=807703",
+      "addSalesListing": "https://one-au-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
+      "addRentalListing": "https://one-au-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental",
+      "addStaffUrl": "https://one-au-stage.harcourts.net/Directory/StaffEdit.aspx"     
     },
     
     "loginSystemAdministrator": {
-      "username": "daninz",
-      "password": "daninz"
+      "username": "m_dwhanau",
+      "password": "puter1234"
     },
 
     "loginSalesConsultant": {
-      "username": "s_htester",
-      "password": "d26mg"
+      "username": "s_aminihan",
+      "password": "i24dx"
     },
    
     "loginOfficeAdministrator": {
-      "username": "johnnybravo",
-      "password": "pretty"
+      "username": "har",
+      "password": "har"
     }
   },
   "projectId": "so24xv"
