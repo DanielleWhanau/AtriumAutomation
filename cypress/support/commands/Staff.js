@@ -36,25 +36,6 @@ Cypress.Commands.add('newStaff', (type) => {
             .click()
             //Faker creates a random date within the last 20 years
             .type(date)
-            // //Selects Sales Consutant office
-            // .get('[id$=tabDetails_btnChangeOU]')
-            // .click()
-            // .get('#ctl00_cph0_divHeading')
-            // .should("be.visible")
-            // .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
-            // .click()
-            // .get('#select2-drop > div:nth-child(1) > input')
-            // .click()
-            // //Finding and selecting specific office from drop down list...
-            // .type(officeName)
-            // .get(selectFromList)
-            // .children()
-            // .contains(officeName)
-            // .first()
-            // .click()
-            // //Confirming office selection..
-            // .get('[id$=cph0_btnSelect]', { timeout: 20000 })
-            // .click()
             //Selects Contact tab on edit page
             .get(selectTab)
             .contains('Contact')
@@ -95,8 +76,8 @@ Cypress.Commands.add('newStaff', (type) => {
 
         if (type === 'office-administrator') {
             //Selecting office the Office Adminsitrator "Manages"
-                cy.get('[id$=btnChangeManagedOU]')
-                .click()
+                cy.get('#ctl00_cph0_tabContainerMain_tpnlSystem_tabContainerSystemInner_tpnlSystemInnerSecurity_btnChangeManagedOU')
+                .click({force: true})
                 .get('#ctl00_cph0_divHeading')
                 .should("be.visible")
                 .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
