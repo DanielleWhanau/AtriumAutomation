@@ -7,7 +7,7 @@
   "baseUrl": "https://one-nz-stage.harcourts.net",
   "env": {
     "manual": false,
-    "RETRIES": 0,
+    "RETRIES": 2,
     "environment": "STAGE",
     "country": "NZ",
     "urls": {
@@ -20,8 +20,8 @@
     },
     
     "loginSystemAdministrator": {
-      "username": "daninz",
-      "password": "daninz"
+      "username": "m_dwhanau",
+      "password": "puter1234"
     },
 
     "loginSalesConsultant": {

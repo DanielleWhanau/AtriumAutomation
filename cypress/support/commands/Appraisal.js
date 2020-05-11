@@ -1,6 +1,6 @@
 import Faker from 'faker';
 import { SUBURB } from "../../fixtures/Constants";
-import { Environment } from "../Environment"
+import { Environment, isID } from "../Environment"
 import { isNZ, isAU, isZA, isUS } from '../Environment';
 
 Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
@@ -53,7 +53,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             //Makes sure the edit container is not visible
             .get('.spinner')
             .should('not.be.visible')
-            //Select Property Details tab
+            //Select Appraisal Details tab
             .get('[id$=tabPropertyDetails_tab]')
             .click()
             //Enter Appraisal Street Number
@@ -66,7 +66,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             //Search and Select Appraisal Suburb
             .get("[id$=ajaxSearchLocation_hidSelectedID] > .select2-choice > .select2-arrow")
             .click()
-            .get('#s2id_autogen20_search')
+            .get('#select2-drop > .select2-search')
             .click()
             .type(suburb)
             //Ensure the Search text in 'progress' is not visible
@@ -78,32 +78,68 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             //Makes sure the loading 'H' spinner is not visible
             .get('.spinner')
             .should('not.be.visible')
+
+        if (isNZ()) {
+            //Selects Map sub tab
+            cy.get(selectTab)
+                .contains('Map')
+                .click()
+                //Selects the possible map location
+                .get(".listing-edit-map", { timeout: 30000 })
+                .should("be.visible")
+                .get('#geocodeResults > a')
+                .contains(suburb)
+                .click()
             //Select Appraisal Property type House, Unit, Apartment etc.
-            .get('#s2id_ctl00_cph0_tcAppraisal_tabPropertyDetails_drpPropertyType > .select2-choice')
-            .click()
-            .get(selectFromList, { timeout: 5000 })
-            .contains('House')
-            .click()
-            //Set bedrooms
-            .get('[id$=txtBedrooms]')
-            .click()
-            .type('5')
-            //Set bathrooms
-            .get('[id$=txtBathrooms]')
-            .click()
-            .type('3')
-            //Selects Map tab
-            .get(selectTab)
-            .contains('Map')
-            .click()
-            //Confirm possible map location
-            .get(".listing-edit-map", { timeout: 30000 })
-            .should("be.visible")
-            .get('#geocodeResults > a')
-            .contains(suburb)
-            .click()
-            //Selects Tasks tab
-            .get(selectTab)
+            cy.get('#__tab_ctl00_cph0_tcAppraisal_ctl00')
+                .click()
+                //Select House
+                .get('[id$=advPropertyType_7_0]')
+                .click()
+                //Set bedrooms
+                .get('[id$=advBedrooms_0]')
+                .click()
+                .type('5')
+                //Set bathrooms
+                .get('[id$=advBathrooms_0]')
+                .click()
+                .type('3')
+                //Set bathrooms
+                .get('[id$=advTotalToilets_0]')
+                .click()
+                .type('2')
+        }
+
+        if (isAU() || isZA() || isID()) {
+
+            //Select Appraisal Property type House, Unit, Apartment etc.
+            cy.get('#s2id_ctl00_cph0_tcAppraisal_tabPropertyDetails_drpPropertyType > .select2-choice')
+                .click()
+                .get(selectFromList, { timeout: 5000 })
+                .contains('House')
+                .click()
+                //Set bedrooms
+                .get('[id$=txtBedrooms]')
+                .click()
+                .type('5')
+                //Set bathrooms
+                .get('[id$=txtBathrooms]')
+                .click()
+                .type('3')
+                //Selects Map tab
+                .get(selectTab)
+                .contains('Map')
+                .click()
+                //Confirm possible map location
+                .get(".listing-edit-map", { timeout: 60000 })
+                .should("be.visible")
+                .get('#geocodeResults > a')
+                .contains(suburb)
+                .click()
+        }
+
+        //Selects Tasks tab
+        cy.get(selectTab)
             .contains('Tasks')
             .click()
             //Add single Task details
@@ -127,7 +163,7 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             cy.get('[id$=uclTaskEdit_uclDueDateTime_txtDate]')
                 .click()
                 .type(futureUSDate)
-            }
+        }
 
         //Task time
         cy.get('[id$=uclTaskEdit_uclDueTime_txtTimeDisplay]')
@@ -145,10 +181,10 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             //Generates search results for criteria set
             .get('[id$=btnSearch]')
             .click()
-            .get('.spinner', { timeout: 30000 })
+            .get('.spinner', { timeout: 60000 })
             .should('not.be.visible')
-            //Save Appraisal
-            cy.SaveButton();
-            cy.log('Completed')
+        //Save Appraisal
+        cy.SaveButton();
+        cy.log('Completed')
     });
 });
