@@ -4,19 +4,19 @@
   "chromeWebSecurity": false,
   "defaultCommandTimeout": 60000,
   "numTestsKeptInMemory": 4,
-  "baseUrl": "https://atrium-nz-stage.harcourts.net",
+  "baseUrl": "https://atrium-nz-qa.harcourts.net/",
   "env": {
     "manual": false,
     "RETRIES": 2,
-    "environment": "STAGE",
-    "country": "NZ",
+    "environment": "stage",
+    "country": "NZ-qa",
     "urls": {
-      "dashboard": "https://atrium-nz-stage.harcourts.net/",
-      "residentialSalesListing":"https://atrium-nz-stage.harcourts.net/Listings/View.aspx?id=894940", 
-      "residentialRentalListing": "https://atrium-nz-stage.harcourts.net/Listings/View.aspx?id=894945",
-      "addSalesListing": "https://atrium-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
-      "addRentalListing": "https://atrium-nz-stage.harcourts.net/Listings/Edit01.aspx?t=residentialrental",  
-      "addStaffUrl": "https://atrium-nz-stage.harcourts.net/Directory/StaffEdit.aspx"  
+      "dashboard": "https://atrium-nz-qa.harcourts.net/",
+      "residentialSalesListing":"https://atrium-nz-qa.harcourts.net/Listings/View.aspx?id=894940", 
+      "residentialRentalListing": "https://atrium-nz-qa.harcourts.net/Listings/View.aspx?id=894945",
+      "addSalesListing": "https://atrium-nz-qa.harcourts.net/Listings/Edit01.aspx?t=residential",
+      "addRentalListing": "https://atrium-nz-qa.harcourts.net/Listings/Edit01.aspx?t=residentialrental",  
+      "addStaffUrl": "https://atrium-nz-qa.harcourts.net/Directory/StaffEdit.aspx"  
     },
     
     "loginSystemAdministrator": {
