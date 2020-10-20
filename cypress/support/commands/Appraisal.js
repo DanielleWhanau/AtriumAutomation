@@ -32,13 +32,13 @@ Cypress.Commands.add('addResidentialSalesAppraisal', (type) => {
             //Enter Contact Email Address
             .get('[id$=txtEmailAddress]')
             .click()
-            .type('h1.test.testers@harcourts.net')
+            .type('releasetest@harcourts.net')
 
         //NZ + AU have confirm email all others don't        
         if (isNZ() || isAU()) {
             cy.get("[id$=uclContactNewQuick_txtConfirmEmail]")
                 .click()
-                .type('h1.test.testers@harcourts.net')
+                .type('releasetest@harcourts.net')
         }
 
         if (isZA()) {

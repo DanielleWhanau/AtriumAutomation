@@ -77,12 +77,12 @@ Cypress.Commands.add('addListing', (type) => {
                     .type(lastName)
                     .get('[id$=txtEmailAddress]')
                     .click()
-                    .type('h1.test.testers@harcourts.net')
+                    .type('releasetest@harcourts.net')
 
                 if (isNZ() || isAU()) {
                     cy.get('[id$=uclContactNewQuick_txtConfirmEmail]')
                         .click()
-                        .type('h1.test.testers@harcourts.net')
+                        .type('releasetest@harcourts.net')
                         .get("[id$=uclContactNewQuick_btnAdd]")
                         .click()
                 }
@@ -162,10 +162,10 @@ Cypress.Commands.add('addListing', (type) => {
                     .type(lastName)
                     .get('[id$=txtEmailAddress]')
                     .click()
-                    .type('h1.test.testers@harcourts.net')
+                    .type('releasetest@harcourts.net')
                     .get('[id$=uclContactNewQuick_txtConfirmEmail]')
                     .click()
-                    .type('h1.test.testers@harcourts.net')
+                    .type('releasetest@harcourts.net')
                     .get("[id$=uclContactNewQuick_btnAdd]")
                     .click()
                     .get(sellerModal)

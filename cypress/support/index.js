@@ -47,7 +47,6 @@ import '../support/commands/CCGProducts';
 import '../support/commands/ContactTrails';
 import '../support/commands/O&PSites';
 import '../support/commands/CommandCodes';
-import '../support/commands/AtriumCommands';
 
 //Cypress.on('uncaught:exception', (err, runnable) => {
  //   return false;

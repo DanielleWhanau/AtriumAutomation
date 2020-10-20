@@ -13,7 +13,7 @@ Cypress.Commands.add('purchaseProduct', (type) => {
             var command = cy
             if (type === 'email-purchase') {
                 //Accept T&C's
-                cy.visit(Environment.pages.dashboard+'/Apps/Products/Product.mvc/EmailAddressPurchase')
+                cy.visit(Environment.pages.dashboard+'Apps/Products/Product.mvc/EmailAddressPurchase')
                 cy.get('#AcceptTermsAndConditions')
                     .click()
                     .get('.button')
@@ -22,7 +22,7 @@ Cypress.Commands.add('purchaseProduct', (type) => {
 
             if (type === 'website-purchase') {
                 //Accept T&C's
-                cy.visit(Environment.pages.dashboard+'/Apps/Products/Product.mvc/ConsultantWebsitePurchase')
+                cy.visit(Environment.pages.dashboard+'Apps/Products/Product.mvc/ConsultantWebsitePurchase')
                 cy.get('#AcceptTermsAndConditions')
                     .click()
                     .get('.button')

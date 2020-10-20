@@ -11,6 +11,7 @@ Cypress.Commands.add('newStaff', (type) => {
         var selectFromList = 'li.select2-results-dept-0'
         var selectTab = '.ajax__tab_header span.ajax__tab_tab'
         var officeName = OFFICENAME[Environment.country]
+        var randomEmail = Faker.internet.email();
 
         cy.window().then(window => {
             Cypress.$("#ctl00_cph0_uclDynamicStaffFind_StaffFind_pnlStaffFind").remove();
@@ -47,20 +48,22 @@ Cypress.Commands.add('newStaff', (type) => {
             //Enter Email address
             .get('[id$=uclContactInfoEdit_txtEmail]')
             .click()
-            .type('h1.test.testers@harcourts.net')
+            .type('releasetest@harcourts.net')
 
         //NZ + AU have confirm email all others don't        
         if (isNZ() || isAU()) {
             cy.get('[id$=uclContactInfoEdit_txtConfirmEmail]')
                 .click()
-                .type('h1.test.testers@harcourts.net')
+                .type('releasetest@harcourts.net')
         }
 
         //Selects System tab on edit page
         cy.get(selectTab)
             .contains('System')
             .click()
-
+            .get('[id$=txtPersonalEmailAddress]')
+            .click()
+            .type(randomEmail)
 
         if (type === 'sales-consultant') {
             //Selects Full edit listing permissions
@@ -75,10 +78,17 @@ Cypress.Commands.add('newStaff', (type) => {
         }
 
         if (type === 'office-administrator') {
-            //Selecting office the Office Adminsitrator "Manages"
-                cy.get('#ctl00_cph0_tabContainerMain_tpnlSystem_tabContainerSystemInner_tpnlSystemInnerSecurity_btnChangeManagedOU')
+                //Changing "Security Group" to Office Adminsitrator
+                cy.get('[id$=drpSecurityGroup] > .select2-choice', { timeout: 20000 })
+                .click()
+                .get(selectFromList)
+                .children()
+                .contains("Office Administrator")
+                .click({ force: true })
+                //Selecting office the Office Adminsitrator "Manages"
+                .get('#ctl00_cph0_tabContainerMain_tpnlSystem_tabContainerSystemInner_tpnlSystemInnerSecurity_btnChangeManagedOU')
                 .click({force: true})
-                .get('#ctl00_cph0_divHeading')
+                .get('#ctl00_cph0_divHeading', {timeout: 10000})
                 .should("be.visible")
                 .get('[id$=uclAjaxSearchOrganisationalUnit_hidSelectedID] > .select2-choice > .select2-arrow')
                 .click()
@@ -97,13 +107,6 @@ Cypress.Commands.add('newStaff', (type) => {
                 //Selecting "Specialty" - N/A  
                 .get('[id$=rblSpecialty_0]')
                 .click()
-                //Changing "Security Group" to Office Adminsitrator
-                .get('[id$=drpSecurityGroup] > .select2-choice', { timeout: 20000 })
-                .click()
-                .get(selectFromList)
-                .children()
-                .contains("Office Administrator")
-                .click({ force: true })
         }
 
         cy.get('[id$=tpnlSystemInnerSecurity_txtUsername]')
