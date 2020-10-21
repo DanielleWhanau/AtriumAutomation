@@ -10,7 +10,8 @@ export const Environment = {
         residentialRentalListing: Cypress.env('urls').residentialRentalListing,
         addSalesListing: Cypress.env('urls').addSalesListing,
         addRentalListing: Cypress.env('urls').addRentalListing,
-        addStaffUrl: Cypress.env('urls').addStaffUrl
+        addStaffUrl: Cypress.env('urls').addStaffUrl,
+        intelligencePage: Cypress.env('urls').intelligencePage
     },
 
     loginSystemAdministrator: {
