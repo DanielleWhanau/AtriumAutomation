@@ -7,9 +7,9 @@ Cypress.Commands.add('loginSystemAdministrator', () => {
         .type(Environment.loginSystemAdministrator.password)
         .get('button[type=submit]')
         .click()
-        .get('h1')
-        .contains('Dashboard')
-        .should('exist');
+        // .get('h1')
+        // .contains('Dashboard')
+        // .should('exist');
 });
 
 Cypress.Commands.add('loginSalesConsultant', () => {

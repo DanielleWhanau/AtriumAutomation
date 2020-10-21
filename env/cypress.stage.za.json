@@ -10,10 +10,10 @@
     "country": "ZA",
     "office": "Harcourts Office Zooloo",
     "urls": {
-      "dashboard": "https://one-za-stage.harcourts.net/",
-      "residentialSalesListing":"https://one-za-stage.harcourts.net/Listings/View.aspx?id=343775",
-      "addSalesListing": "https://one-za-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
-      "addStaffUrl": "https://one-za-stage.harcourts.net/Directory/StaffEdit.aspx"
+      "dashboard": "https://atrium-za-stage.harcourts.net",
+      "residentialSalesListing":"https://atrium-za-stage.harcourts.net/Listings/View.aspx?id=343775",
+      "addSalesListing": "https://atrium-za-stage.harcourts.net/Listings/Edit01.aspx?t=residential",
+      "addStaffUrl": "https://atrium-za-stage.harcourts.net/Directory/StaffEdit.aspx"
     },
     
     "loginSystemAdministrator": {
