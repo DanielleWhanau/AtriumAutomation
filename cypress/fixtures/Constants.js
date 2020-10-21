@@ -54,7 +54,7 @@ export const OFFICENAME = {
 };
 
 export const CONTACTEDITPAGE = {
-    NZ: 'https://one-nz-stage.harcourts.net/Contacts/Edit.aspx?id=7047013',
+    NZ: 'https://atrium-nz-stage.harcourts.net/Contacts/Edit.aspx?id=7047013',
     AU: 'https://one-au-stage.harcourts.net/Contacts/Edit.aspx?id=11820788',
     US: 'https://one-us-stage.harcourts.net/Contacts/Edit.aspx?id=1463512',
     ID: 'https://one-id-stage.harcourts.net/Contacts/Edit.aspx?id=109429',
