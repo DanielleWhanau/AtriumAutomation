@@ -9,10 +9,5 @@ describe('Checks dashboard dropdowns', function () {
 
     it('can login to atrium and select header dropdowns', () => {
         cy.selectHeaderDropdowns();
-        cy.test();
-        cy.test();
-        cy.test();
-        cy.test();
-        cy.test();
     })
 });
