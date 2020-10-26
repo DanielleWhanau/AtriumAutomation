@@ -6,6 +6,7 @@ Cypress.Commands.add('createKPIDefinition', (type) => {
         cy.get('.jss509 > .MuiButtonBase-root > .MuiButton-label')
             .click()
             .get('.jss333 > .MuiButtonBase-root')
+            .click({force: true})
     });
 });
 

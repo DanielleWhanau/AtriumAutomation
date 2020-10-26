@@ -12,7 +12,6 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-import 'cypress-plugin-retries';
 import './ManualTest';
 import './CustomSpec';
 import './WaitUntil';
