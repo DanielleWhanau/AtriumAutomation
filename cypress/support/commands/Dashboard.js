@@ -27,7 +27,7 @@ Cypress.Commands.add('selectHeaderDropdowns', (type) => {
             .click()
             .wait(1000)
             //click white space to collapse draw out
-            .get('.jss369')
+            .get('.jss448')
             .click()
             //Select User Icon
             .get('[data-testid=toggle-user-menu-popup]')
